@@ -1,0 +1,12 @@
+# the below items are list of files we will not upload to github
+*.exe
+*.dll
+*.so
+*.dylib
+*.log
+*.tmp
+.vscode/
+.idea/
+*.suo
+*.user
+.env
