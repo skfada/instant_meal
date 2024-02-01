@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block title %}dashboard Page{% endblock %}
+	{% block dashboard %} active{% endblock %}
+
+{% block heading %}Welcome {{session['username']}} to our dashboard page{% endblock %}
+{% block body %}
+
+
+<section class="active"></section>
+
+{% endblock %}
+
+
+
+{% block javascript %}
+<script>
+function fundWallet(event){
+	const section_fundwallet = document.getElementById('section_fundwallet');
+	/*to change the link of the fund wallet to display to block*/
+	section_fundwallet.style.display='block';
+
+	const overlay = document.getElementById('overlay');
+	/* changing the style effects */
+	overlay.style.position="fixed";
+	overlay.style.top="0";
+	overlay.style.right="0";
+	overlay.style.bottom="0";
+	overlay.style.left="0";
+	overlay.style.backgroundColor="rgba(0,0,0,0.5)";
+	overlay.style.zIndex="15";
+
+}
+
+
+function updateProfile(){
+	const section_updateform = document.getElementById('section_updateform');
+	/*to change the link of the fund wallet to display to block*/
+	section_updateform.style.display='block';
+
+	const overlay = document.getElementById('overlay');
+	/* changing the style effects */
+	overlay.style.position="fixed";
+	overlay.style.top="0";
+	overlay.style.right="0";
+	overlay.style.bottom="0";
+	overlay.style.left="0";
+	overlay.style.backgroundColor="rgba(0,0,0,0.5)";
+	overlay.style.zIndex="15";
+}
+
+
+function passwordReset(){
+	const section_passwordreset = document.getElementById('section_passwordreset');
+	/*to change the link of the fund wallet to display to block*/
+	section_passwordreset.style.display='block';
+
+	const overlay = document.getElementById('overlay');
+	/* changing the style effects */
+	overlay.style.position="fixed";
+	overlay.style.top="0";
+	overlay.style.right="0";
+	overlay.style.bottom="0";
+	overlay.style.left="0";
+	overlay.style.backgroundColor="rgba(0,0,0,0.5)";
+	overlay.style.zIndex="15";
+
+}
+
+
+</script>
+{% endblock %}

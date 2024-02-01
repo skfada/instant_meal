@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>{% block title %}<!--REPLACE WITH PAGE TITLE-->{% endblock %}</title>
+	<link rel='stylesheet' href='{{url_for("static",filename="style.css")}}'>
+</head>
+<body>
+<section id='sec-navbar'>
+	<img src="{{url_for('static',filename='images/logo.png')}}">
+
+	<ul>
+		<li><a class="{% block home %} {% endblock %}" href='{{url_for("home.home_page")}}'>Home</a></li>
+		{% if 'user_name' in session %}
+			<li><a class="{% block market %} {% endblock %}" href='{{url_for("market.market_page")}}'>Market</a></li>
+			<li><a class="{% block dashboard %} {% endblock %}" href='{{url_for("user_info.dashboard")}}'>Dashboard</a></li>
+			<li><div>Welcome {{session['user_name']}}</div></li>
+			<li><div>Naira:{{session['user_fmt_budget']}}</div></li>
+			<li><a class="{% block logout %} {% endblock %}" href='{{url_for("user_login.logout")}}'>Logout</a></li>
+		{% else %}
+			<li><a class="{% block login %} {% endblock %}" href='{{url_for("user_login.login")}}'>Login</a></li>
+			<li><a class="{% block register %} {% endblock %}" href='{{url_for("user.register")}}'>Register</a></li>
+		{% endif %}
+	</ul>
+</section>
+
+
+<section id='sec_flashbar'>
+	{% with messages = get_flashed_messages(with_categories=True) %}
+		{% if messages %}
+			{% for category,message in messages %}
+			<div id="flash_div" class="flash_div">
+				<div>{{category}} :</div>
+				<input id="flas_msg" type="hidden" value="{{message}}">
+				<input id="flas_cat" type="hidden" value="{{category}}">
+				<div>{{message}}</div>
+				<button id="flash_close_btn" class="close_btn" onclick="closeflash()">&times</button>
+			</div>
+			{% endfor %}
+		{% endif %}
+	{% endwith %}
+</section>
+
+<!-- this will prevent pointer events once flash displays-->
+<section id="overlay"></section>
+
+<div id="titleh"><h4>{% block heading %}{% endblock %}</h4></div>
+
+<!--LEFT NAVIGATION BAR-->
+{% if 'user_name' in session %}
+<section id='sec-navdashboard'>
+	<ul>
+		<li><a class="{% block wallet %} {% endblock %}" href="{{url_for('user_update.fund_wallet')}}">Fund Wallet</a></li>
+		<li><a>Upload Picture</a></li>
+		<li><a class="{% block viewprofile %} {% endblock %}" href="{{url_for('user_info.view_profile')}}">View Profile</a></li>
+		<li><a class="{% block update %} {% endblock %}" href="{{url_for('user_update.update')}}">Update Profile</a></li>
+		<li><a class="{% block reset %} {% endblock %}" href="{{url_for('user_update.password_reset')}}">Change Password</a></li>
+	</ul>
+</section>
+{% endif %}
+{% block body %}
+
+
+
+{% endblock %}
+
+<script>
+const category = document.getElementById('flas_cat').value;
+const message = document.getElementById('flas_msg').value;
+const sec_flashbar = document.getElementById('sec_flashbar');
+const flash_div = document.getElementById('flash_div');
+const overlay = document.getElementById('overlay');
+
+
+if (message === ""){
+	sec_flashbar.style.display="none";
+}
+else {
+	sec_flashbar.style.display="block";	
+	if (category === "success"){
+		flash_div.style.backgroundColor="rgba(0,255,0,0.5)";
+	}
+	else if (category === "info"){
+		flash_div.style.backgroundColor="rgba(0,0,255,0.5)";
+	}
+	else if (category === "caution"){
+		flash_div.style.backgroundColor="rgba(255,0,0,0.5)";
+	}
+	
+	overlay.style.position="fixed";
+	overlay.style.top="0";
+	overlay.style.right="0";
+	overlay.style.bottom="0";
+	overlay.style.left="0";
+	overlay.style.backgroundColor="rgba(0,0,0,0.5)";
+	overlay.style.zIndex="15";
+}
+
+function closeflash(){
+	sec_flashbar.style.display="none";
+	overlay.style.pointerEvents="none";
+	overlay.style.opacity="0";
+	/*location.reload();*/
+
+}
+</script>
+
+
+<!--JAVA FOR OTHER PAGES-->
+{% block javascript %}
+
+
+{% endblock %}
+</body>
+</html>

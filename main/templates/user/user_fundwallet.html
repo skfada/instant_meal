@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Fund Wallet{% endblock %}
+	{% block wallet %} active{% endblock %}
+
+{% block heading %}Welcome {{session['username']}} to our dashboard page{% endblock %}
+
+
+{% block body %}
+
+
+<section id="section_fundwallet">
+	<div id="div_regform">
+		<form method="POST" action="{{url_for('user_update.fund_wallet')}}">
+			<div>Enter The Amount to Fund your Wallet</div>
+			<input id="reg_email" name="amount" type="number" maxlength="5"><br><br>
+
+
+			<input id="reg_username" type='hidden' name="user_name" value="{{session['user_name']}}">
+			<input id="reg_username" type='hidden' name="user_id" value="{{session['user_id']}}">
+			<button class="normalbtn">Fund Account</button>
+		</form>
+	</div>
+</section>
+
+
+
+
+
+
+
+
+{% endblock %}
+
+
+
+{% block javascript %}
+<script>
+
+function loginLink(){
+	window.location.href="/api/user/login"
+}
+</script>
+{% endblock %}

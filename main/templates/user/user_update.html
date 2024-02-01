@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}Update Profile{% endblock %}
+	{% block update %} active{% endblock %}
+
+{% block heading %}Welcome {{session['username']}} to the update page{% endblock %}
+
+{% block body %}
+<section id="section_updateform">
+	<div id="div_regform">
+		<form method="POST" action="{{url_for('user_update.update')}}">
+			<div>First Name</div>
+			<input id="reg_username" name="firstname"  maxlength="20" ><br><br>
+
+			<div>Last Name</div>
+			<input id="reg_email" name="lastname"  maxlength="60" ><br><br>
+
+			<div>Date of Birth</div>
+			<input id="reg_pwd1" name="dob" type="date" ><br><br>
+
+			<div>Occupation</div>
+			<input id="reg_pwd2" name="occupation" maxlength="60" ><br><br>
+			
+			<div>Phone NUmber</div>
+			<input id="reg_pwd2" name="phone" minlength="8" maxlength="16" ><br><br>
+			
+			<div>Country of Residence</div>
+			<input id="reg_pwd2" name="country" type="country" maxlength="60" ><br><br>
+			
+			<div>State of Residence</div>
+			<input id="reg_pwd2" name="state" maxlength="60"><br><br>
+			
+			<div>LGA of Residence</div>
+			<input id="reg_pwd2" name="lga" maxlength="60" ><br><br>
+			
+			<div>Deatailed House Address</div>
+			<input id="reg_pwd2" name="house" maxlength="60" ><br><br>
+
+			<button class="normalbtn">Update Record</button>
+		</form>
+	</div>
+</section>
+
+
+
+
+
+
+
+
+{% endblock %}
+
+
+
+{% block javascript %}
+<script>
+
+function loginLink(){
+	window.location.href="/api/user/login"
+}
+</script>
+{% endblock %}

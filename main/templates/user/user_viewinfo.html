@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}View Profile{% endblock %}
+	{% block viewprofile %} active{% endblock %}
+
+{% block heading %}Welcome {{session['username']}} to our dashboard page{% endblock %}
+
+{% block body %}
+
+<section id="sec_viewprofile">
+	<div class="div_viewprofile">
+		{% for user in users %}
+			<div class="div_viewprofile"><strong>username: </strong>{{user.username}}</div><hr>
+			<div><strong>email: </strong>{{user.email}}</div><hr>
+			<div><strong>first_name: </strong>{{user.first_name}}</div><hr>
+			<div><strong>last_name: </strong>{{user.last_name}}</div><hr>
+			<div><strong>date_of_birth: </strong>{{user.date_of_birth}}</div><hr>
+			<div><strong>occupation: </strong>{{user.occupation}}</div><hr>
+			<div><strong>phone_no: </strong>{{user.phone_no}}</div><hr>
+			<div><strong>country_of_residence: </strong>{{user.country_of_residence}}</div><hr>
+			<div><strong>State_of_residence: </strong>{{user.State_of_residence}}</div><hr>
+			<div><strong>lga_residence: </strong>{{user.lga_residence}}</div><hr>
+			<div><strong>house_address: </strong>{{user.house_address}}</div><hr>
+			<div><strong>reg_date: </strong>{{user.reg_date}}</div><hr>
+			<div><strong>last_login: </strong>{{user.last_login}}</div><hr>
+		{% endfor %}
+	</div>
+</section>
+
+
+
+
+
+
+{% endblock %}
+
+
+
+{% block javascript %}
+<script>
+
+
+</script>
+{% endblock %}
