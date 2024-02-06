@@ -1,0 +1,44 @@
+{% extends "seller_base.html" %}
+
+{% block title %}View Profile{% endblock %}
+	{% block viewprofile %} active{% endblock %}
+
+{% block heading %}Welcome {{session['username']}} to our dashboard page{% endblock %}
+
+{% block body %}
+
+<section id="sec_viewprofile">
+	<div class="div_viewprofile">
+		{% for user in users %}
+			<div class="div_viewprofile"><strong>username: </strong>{{user.username}}</div><hr>
+			<div><strong>email: </strong>{{user.company_email}}</div><hr>
+			<div><strong>first_name: </strong>{{user.company_name}}</div><hr>
+			<div><strong>last_name: </strong>{{user.company_reg_no}}</div><hr>
+			<div><strong>year_of_establishment: </strong>{{user.year_of_establishment}}</div><hr>
+			<div><strong>occupation: </strong>{{user.occupation}}</div><hr>
+			<div><strong>company_phone_no: </strong>{{user.company_phone_no}}</div><hr>
+			<div><strong>country_of_operation: </strong>{{user.country_of_operation}}</div><hr>
+			<div><strong>State_of_opration: </strong>{{user.State_of_opration}}</div><hr>
+			<div><strong>lga_operation: </strong>{{user.lga_operation}}</div><hr>
+			<div><strong>company_address: </strong>{{user.company_address}}</div><hr>
+			<div><strong>reg_date: </strong>{{user.reg_date}}</div><hr>
+			<div><strong>last_login: </strong>{{user.last_login}}</div><hr>
+		{% endfor %}
+	</div>
+</section>
+
+
+
+
+
+
+{% endblock %}
+
+
+
+{% block javascript %}
+<script>
+
+
+</script>
+{% endblock %}

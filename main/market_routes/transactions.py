@@ -1,7 +1,8 @@
-from market_routes import *
+from main import *
+from main.database.dbModels import Market
+
 
 @market.route('/txn')
-@login_required
 def txn():
     ''' function that records transactions '''
     return render_template('market/txn.html')

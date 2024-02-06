@@ -3,7 +3,7 @@
 <html>
 <head>
 	<title>{% block title %}<!--REPLACE WITH PAGE TITLE-->{% endblock %}</title>
-	<link rel='stylesheet' href='{{url_for("static",filename="style.css")}}'>
+	<link rel='stylesheet' href='{{url_for("static",filename="seller_style.css")}}'>
 </head>
 <body>
 <section id='sec-navbar'>
@@ -11,20 +11,18 @@
 
 	<ul>
 		<li><a class="{% block home %} {% endblock %}" href='{{url_for("home.home_page")}}'>Home</a></li>
-		{% if 'user_name' in session %}
-			<li><a class="{% block market %} {% endblock %}" href='{{url_for("user.market")}}'>Market</a></li>
-			<li><a class="{% block dashboard %} {% endblock %}" href='{{url_for("user.dashboard")}}'>Dashboard</a></li>
-			<li><div>Welcome {{session['user_name']}}</div></li>
-			<li><div>Naira:{{session['user_fmt_budget']}}</div></li>
-			<li><a class="{% block logout %} {% endblock %}" href='{{url_for("user.logout")}}'>Logout</a></li>
+		{% if 'seller_name' in session %}
+			<li><a class="{% block market %} {% endblock %}" href='{{url_for("seller.market")}}'>Market</a></li>
+			<li><a class="{% block dashboard %} {% endblock %}" href='{{url_for("seller.dashboard")}}'>Dashboard</a></li>
+			<li><div>Welcome {{session['seller_name']}}</div></li>
+			<li><div>Naira:{{session['seller_fmt_budget']}}</div></li>
+			<li><a class="{% block logout %} {% endblock %}" href='{{url_for("seller.logout")}}'>Logout</a></li>
 		{% else %}
 			{% block userlogin %}{% endblock %}
 			{% block sellerlogin %}{% endblock %}
 		{% endif %}
 	</ul>
 </section>
-
-
 
 
 <section id='sec_flashbar'>
@@ -49,15 +47,14 @@
 <div id="titleh"><h4>{% block heading %}{% endblock %}</h4></div>
 
 <!--LEFT NAVIGATION BAR-->
-
-{% if 'user_name' in session %}
+{% if 'seller_name' in session %}
 <section id='sec-navdashboard'>
 	<ul>
-		<li><a class="{% block wallet %} {% endblock %}" href="{{url_for('user.fund_wallet')}}">Fund Wallet</a></li>
+		<li><a class="{% block upload_item %} {% endblock %}" href="{{url_for('seller.upload_meal')}}">Upload Meal</a></li>
 		<li><a>Upload Picture</a></li>
-		<li><a class="{% block viewprofile %} {% endblock %}" href="{{url_for('user.view_profile')}}">View Profile</a></li>
-		<li><a class="{% block update %} {% endblock %}" href="{{url_for('user.update')}}">Update Profile</a></li>
-		<li><a class="{% block reset %} {% endblock %}" href="{{url_for('user.password_reset')}}">Change Password</a></li>
+		<li><a class="{% block viewprofile %} {% endblock %}" href="{{url_for('seller.view_profile')}}">View Profile</a></li>
+		<li><a class="{% block update %} {% endblock %}" href="{{url_for('seller.update')}}">Update Profile</a></li>
+		<li><a class="{% block reset %} {% endblock %}" href="{{url_for('seller.password_reset')}}">Change Password</a></li>
 	</ul>
 </section>
 {% endif %}

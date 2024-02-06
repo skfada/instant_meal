@@ -1,9 +1,9 @@
-{% extends "base.html" %}
+{% extends "seller_base.html" %}
 
 {% block title %}Dashboard Page{% endblock %}
 	{% block dashboard %} active{% endblock %}
 
-{% block heading %}Welcome {{session['user_name']}} to the Dashboard page{% endblock %}
+{% block heading %}Welcome {{session['seller_name']}} to the Dashboard page{% endblock %}
 {% block body %}
 
 <section id="section_table">
@@ -24,18 +24,16 @@
 				</th>
 			</thead>
 			<tbody>
-				{% for order in orders %}
 				<tr>
-					<td>{{order.order_id}}</td>
-					<td>{{order.order_datetime}}</td>
-					<td>{{order.buyer_name}}</td>
-					<td>{{order.menu_name}}</td>
-					<td>N{{formatNumber(order.menu_price)}}</td>
-					<td>{{order.seller_name}}</td>
-					<td>{{order.order_status}}</td>
-					<td>{{order.delivery_datetime}}</td>
+					<td>{{orders.order_id}}</td>
+					<td>{{orders.order_datetime}}</td>
+					<td>{{orders.buyer_name}}</td>
+					<td>{{orders.menu_name}}</td>
+					<td>N{{formatNumber(orders.menu_price)}}</td>
+					<td>{{orders.seller_name}}</td>
+					<td>{{orders.order_status}}</td>
+					<td>{{orders.delivery_datetime}}</td>
 				</tr>
-				{% endfor %}
 			</tbody>
 		</table>
 		<!--<button id="uploadlink" onclick="addNewItem()" class="small_infobtn">Add New Item To Sell</button>-->

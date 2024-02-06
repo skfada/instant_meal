@@ -1,9 +1,9 @@
-{% extends "base.html" %}
+{% extends "seller_base.html" %}
 
-{% block title %}Dashboard Page{% endblock %}
-	{% block dashboard %} active{% endblock %}
+{% block title %}Market Page{% endblock %}
+	{% block market %} active{% endblock %}
 
-{% block heading %}Welcome {{session['user_name']}} to the Dashboard page{% endblock %}
+{% block heading %}Welcome {{session['seller_name']}} to our market page{% endblock %}
 {% block body %}
 
 <section id="section_table">
@@ -12,33 +12,39 @@
 			<thead>
 				<th>
 					<tr>
-						<td>Oder ID</td>
-						<td>Oder Date</td>
-						<td>Buyer Name</td>
+						<td>Menu ID</td>
+						<td>Menu pic</td>
 						<td>Menu Name</td>
 						<td>Menu Price</td>
 						<td>Seller Name</td>
-						<td>Oder Status</td>
-						<td>Delivery Time</td>
+						<td class="actionhead">Take Action</td>
 					</tr>
 				</th>
 			</thead>
 			<tbody>
-				{% for order in orders %}
+				{% include 'seller/includes/modal_viewinfo.html' %}
+				{% include 'seller/includes/modal_buyitem.html' %}
+				{% for item in items %}
 				<tr>
-					<td>{{order.order_id}}</td>
-					<td>{{order.order_datetime}}</td>
-					<td>{{order.buyer_name}}</td>
-					<td>{{order.menu_name}}</td>
-					<td>N{{formatNumber(order.menu_price)}}</td>
-					<td>{{order.seller_name}}</td>
-					<td>{{order.order_status}}</td>
-					<td>{{order.delivery_datetime}}</td>
+					<td>{{item.menu_id}}</td>
+					<td>{{item.menu_picture}}</td>
+					<td>{{item.menu_name}}</td>
+					<td>N{{formatNumber(item.menu_price)}}</td>
+					<td>{{item.seller_name }}</td>
+					<td class="actioncolum">
+						<button class="small_infobtn" onclick="viewInfo(heading='{{item.menu_name}}', desc='{{item.menu_description}}')" type="button">View Info</button>
+						<form>
+							<input name="itemname" type="hidden">
+							<input name="price" type="hidden">
+							<input name="id" type="hidden">
+							<button class="small_buybtn" onclick="buyItem(itemname='{{item.menu_name}}', price='N{{formatNumber(item.menu_price)}}', id='{{item.id}}')" type="button">Buy Item</button>
+						</form>
+					</td>
 				</tr>
 				{% endfor %}
 			</tbody>
 		</table>
-		<!--<button id="uploadlink" onclick="addNewItem()" class="small_infobtn">Add New Item To Sell</button>-->
+		<button id="uploadlink" onclick="addNewItem()" class="small_infobtn">Add New Item To Sell</button>
 	</div>
 
 </section>
@@ -77,7 +83,7 @@ function viewInfo(val1='', val2=''){
 }
 
 
-function buyItem(itemname='', price='', itemid='', sellername=''){
+function buyItem(itemname='', price='', id=''){
 	const overlay = document.getElementById('overlay');
 	const section_modal_buyitem = document.getElementById('section_modal_buyitem');
 	const modal_buy_title = document.getElementById('modal_buy_title');
@@ -87,7 +93,7 @@ function buyItem(itemname='', price='', itemid='', sellername=''){
 	const modalbuy_id = document.getElementById('modalbuy_id');
 
 	/* passing values to the modal confirmation form */
-	modalbuy_id.value = itemid;
+	modalbuy_id.value = id;
 
 	/* changing the style effects */
 	section_modal_buyitem.style.display='block';
@@ -106,19 +112,17 @@ function buyItem(itemname='', price='', itemid='', sellername=''){
 
 	var itemName = "Item Name: " + itemname + "<br>";
 	var itemPrice = "Price: " + price + "<br>";
-	var itemID = "ID NO.: " + itemid + "<br>";
-	var sellerName = "Seller Name: " + sellername;
+	var itemID = "ID NO.: " + id;
 	var conclude = "<h5 style='color:yellow'>by clicking the below you are confirmation to buy the above item</h5>";
-	var message = itemName + itemPrice + itemID + sellerName + conclude;
+	var message = itemName + itemPrice + itemID + conclude;
 
 	modal_buy_body.innerHTML = message;
 }
 
 
-/*
+
 function addNewItem(){
 	window.location.href='/seller/upload_meal';
 }
-*/
 </script>
 {% endblock %}

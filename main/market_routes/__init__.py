@@ -1,2 +1,3 @@
-from main.database.dbModels import Users, GeneralJournal
-from main import *
+'''importing the blueprint'''
+from main.market_routes.market import market
+from main.market_routes.transactions import market

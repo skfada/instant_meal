@@ -1,0 +1,105 @@
+{% extends "seller_base.html" %}
+
+{% block title %}Seller Upload Meal{% endblock %}
+	{% block upload_item %} active{% endblock %}
+
+{% block heading %}Complete The Form to Upload Meal For Sale{% endblock %}
+{% block body %}
+
+
+
+<section id="section_uploaditem">
+	<div id="div_uploaditem">
+		<form>
+			<div>Menu Category</div>
+			<input id="uploaditem_category" name="menu_category" minlength="3" maxlength="20"><br><br>
+
+			<div>Menu Name</div>
+			<input id="uploaditem_itemname" name="menu_name" minlength="3" maxlength="20"><br><br>
+
+			<div>Menu Price</div>
+			<input id="uploaditem_price" name="menu_price" type="number" minlength="3" maxlength="9"><br><br>
+
+			<div>Menu Description</div>
+			<textarea id="uploaditem_description" name="menu_description" minlength="3" maxlength="150"></textarea><br><br>
+
+			<button type="button" onclick="uploaditemButton()" class="normalbtn">Click to Upload Item</button>
+		</form>
+
+
+		<div class="small_divtext">Dont want to upload?</div>
+		<button class="smallbtn" onclick="marketLink()">Move to Market</button>
+	</div>
+</section>
+
+
+{% include 'seller/includes/modal_uploaditem.html' %}
+
+
+
+
+
+
+{% endblock %}
+
+
+
+{% block javascript %}
+<script>
+
+
+function marketLink(){
+	window.location.href='/seller/market'
+}
+
+
+function uploaditemButton(){
+	const section_modal = document.getElementById('section_modal');
+	var overlay = document.getElementById('overlay');
+
+	/* id from the upload form */
+	const uploaditem_category = document.getElementById('uploaditem_category');
+	const uploaditem_itemname = document.getElementById('uploaditem_itemname');
+	const uploaditem_price = document.getElementById('uploaditem_price');
+	const uploaditem_description = document.getElementById('uploaditem_description');
+
+	/* id from the modal confirmation form */
+	const modal_category = document.getElementById('modal_category');
+	const modal_itemname = document.getElementById('modal_itemname');
+	const modal_price = document.getElementById('modal_price');
+	const modal_description = document.getElementById('modal_description');
+	const modal_title = document.getElementById('modal_title');
+	const modal_body = document.getElementById('modal_body');
+
+	/* changing the style attributes */
+	section_modal.style.display='block';
+
+	overlay.style.position="fixed";
+	overlay.style.top="0";
+	overlay.style.right="0";
+	overlay.style.bottom="0";
+	overlay.style.left="0";
+	overlay.style.backgroundColor="rgba(0,0,0,0.5)";
+	overlay.style.zIndex="15";
+
+	/* passing values from upload form to modal confirmation html form */
+	modal_category.value = uploaditem_category.value;
+	modal_itemname.value = uploaditem_itemname.value;
+	modal_price.value = uploaditem_price.value;
+	modal_description.value = uploaditem_description.value;
+
+	/* CREATING THE DYNAMIC MESSAGE CONTENT */
+	var title ="Confirm Below Details For Upload";
+	var category ="Menu Category: " + modal_category.value + "<br>";
+	var name ="Menu Name: " + modal_itemname.value + "<br>";
+	var price ="Menu Price: " + modal_price.value + "<br>";
+	var desc ="Menu Desc: " + modal_description.value;
+	var conclude = "<h4 style='color:yellow'>by clicking the below you are confirming the correctness of the item.</h4>";
+	var message = category + name + price + desc + conclude;
+
+	modal_title.innerHTML = title;
+	modal_body.innerHTML = message;
+
+}
+</script>
+{% endblock %}

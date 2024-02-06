@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html>
+
+<body>
+
+
+<section id="section_modal">
+	<div id="div_modal">
+		<section class="modal_header">
+			<div id="modal_title" class="modal_title">modal title</div>
+			<button class="close_btn" onclick="closeUploaditem()">&times</button>
+		</section>
+		<div id="modal_body" class="modal_body">message</div>
+		<form method="POST" action="{{url_for('seller.upload_meal')}}">
+			<input type="hidden" id="modal_category" name="menu_category" minlength="3" maxlength="20">
+			<input type="hidden" id="modal_itemname" name="menu_name" minlength="3" maxlength="20">
+			<input type="hidden" id="modal_price" name="menu_price" type="number" minlength="3" maxlength="9">
+			<input type="hidden" id="modal_description" name="menu_description" minlength="3" maxlength="120">
+			<button class="normalbtn">Confirm  Upload Item</button>
+		</form>
+	</div>
+
+</section>
+
+
+
+
+<script>
+
+
+function closeUploaditem(){
+	const section_modal = document.getElementById('section_modal');
+	var overlay = document.getElementById('overlay');
+
+	section_modal.style.display='none';
+
+	/*to prevent the ovaly front affecting clicks events t*/
+	overlay.style.opacity='0';
+	overlay.style.pointerEvents='none';
+
+	/*this will refresh the page to enable the ovalay work continiously */
+	window.location.href="/seller/upload_meal";
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+{% extends "seller_base.html" %}
+
+{% block title %}Sellers Register Page{% endblock %}
+	{% block register %} active{% endblock %}
+
+{% block heading %}Complete the below form to register{% endblock %}
+
+
+{% block body %}
+
+
+<section id="section_regform">
+	<div id="div_regform">
+		<form method="POST" action="{{url_for('seller.register')}}">
+			<div>User Name</div>
+			<input id="reg_username" name="username" minlength="3" maxlength="20"><br><br>
+
+			<div>Email Address</div>
+			<input id="reg_email" name="email" type="email" minlength="8" maxlength="60"><br><br>
+
+			<div>Password</div>
+			<input id="reg_pwd1" name="pwd1" type="password" minlength="8" maxlength="60"><br><br>
+
+			<div>Confirm Password</div>
+			<input id="reg_pwd2" name="pwd2" type="password" minlength="8" maxlength="60"><br><br>
+
+			<button class="normalbtn">Submit Registration Form</button>
+		</form>
+		<div class="small_divtext">Already Have an account?</div>
+		<button class="smallbtn" onclick="loginLink()">Login Here</button>
+	</div>
+</section>
+
+
+
+
+
+
+
+
+{% endblock %}
+
+
+
+{% block javascript %}
+<script>
+
+function loginLink(){
+	window.location.href="/seller/login"
+}
+</script>
+{% endblock %}

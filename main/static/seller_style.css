@@ -6,7 +6,7 @@ body{
 			/* BASE STYLE */
 			/* SECTION NAVBAR STYLE */
 #sec-navbar{
-	background-color:rgb(255,50,25);
+	background-color:rgb(50,25,255);
 	z-index:10;
 	display:flex;
 	justify-content:space-between;
@@ -494,11 +494,12 @@ button.close_btn:hover{
 #section_table{
 	position:absolute;
 	top:25%;
-	right:5%;
 
+	right:5%;
 	width:80%;
 	width-max:80%;
 	text-align:center;
+	z-index:20;
 }
 
 #div_table{
@@ -526,8 +527,8 @@ button.close_btn:hover{
 }
 
 #div_table table tr:hover {
-	color:yellow;
-
+	color:red;
+	background-color:white;
 }
 
 #div_table table tbody td:hover{

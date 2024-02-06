@@ -1,0 +1,62 @@
+{% extends "seller_base.html" %}
+
+{% block title %}Sellers Update Profile{% endblock %}
+	{% block update %} active{% endblock %}
+
+{% block heading %}Welcome {{session['seller_name']}} to the Seller's update page{% endblock %}
+
+{% block body %}
+<section id="section_updateform">
+	<div id="div_regform">
+		<form method="POST" action="{{url_for('seller.update')}}">
+			<div>Company Name</div>
+			<input id="reg_username" name="company_name"  maxlength="20" ><br><br>
+
+			<div>Company Registration No</div>
+			<input id="reg_email" name="company_reg_no"  maxlength="60" ><br><br>
+
+			<div>Year of Establishment</div>
+			<input id="reg_pwd1" name="date_of_establishment" type="date" ><br><br>
+
+			<div>Type of Service Rendered</div>
+			<input id="reg_pwd2" name="type_of_service" maxlength="60" ><br><br>
+			
+			<div>Company's Phone Number</div>
+			<input id="reg_pwd2" name="company_phone_no" minlength="8" maxlength="16" ><br><br>
+			
+			<div>Country of Company</div>
+			<input id="reg_pwd2" name="country_of_operation" type="country" maxlength="60" ><br><br>
+			
+			<div>State of Company Location</div>
+			<input id="reg_pwd2" name="State_of_opration" maxlength="60"><br><br>
+			
+			<div>LGA of Company</div>
+			<input id="reg_pwd2" name="lga_operation" maxlength="60" ><br><br>
+			
+			<div>Deatailed Company Address</div>
+			<input id="reg_pwd2" name="company_address" maxlength="60" ><br><br>
+
+			<button class="normalbtn">Update Record</button>
+		</form>
+	</div>
+</section>
+
+
+
+
+
+
+
+
+{% endblock %}
+
+
+
+{% block javascript %}
+<script>
+
+function loginLink(){
+	window.location.href="/seller/login"
+}
+</script>
+{% endblock %}

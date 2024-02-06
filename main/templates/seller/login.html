@@ -1,21 +1,20 @@
-{% extends "base.html" %}
+{% extends "seller_base.html" %}
 
-{% block title %}Login Page{% endblock %}
+{% block title %}Seller Login Page{% endblock %}
 	{% block login %} active {% endblock %}
 
 
-{% block heading %}Login with your username and password{% endblock %}
-
-<!--{% block userlogin %}<li><a class="{% block user_login %} {% endblock %}" href="{{url_for('user.login')}}">Login as User</a></li>{% endblock %}-->
+<!--{% block heading %}Login with your username and password{% endblock %}-->
 
 
+{% block sellerlogin %}<li><a class="{% block seller_login %} {% endblock %}" href="{{url_for('seller.login')}}">Login as Seller</a></li>{% endblock %}
 {% block body %}
 
 
 
 <section id="section_loginform">
 	<div id="div_loginform">
-		<form method="POST" action="{{url_for('user.login')}}">
+		<form method="POST" action="{{url_for('seller.login')}}">
 			<div>User Name</div>
 			<input id="login_username" name="username" minlength="3" maxlength="20"><br><br>
 
@@ -41,7 +40,7 @@
 <script>
 
 function regLink(){
-	window.location.href="/user/register"
+	window.location.href="/seller/register"
 }
 </script>
 {% endblock %}

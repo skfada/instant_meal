@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html>
+
+<body>
+
+
+<section id="section_modal_view_info">
+	<div id="div_modal_view_info">
+		<section class="modal_header">
+			<div id="modal_view_info_title" class="modal_title">modal title</div>
+			<button class="close_btn" onclick="closeViewInfo()">&times</button>
+		</section>
+		<div id="modal_view_info_body" class="modal_body">message</div>
+
+	</div>
+
+</section>
+
+<script>
+
+function closeViewInfo(){
+	const section_modal_view_info = document.getElementById('section_modal_view_info');
+	const overlay = document.getElementById('overlay');
+	section_modal_view_info.style.display='none';
+
+	/*to prevent the ovaly front affecting clicks events t*/
+	overlay.style.opacity='0';
+	overlay.style.pointerEvents='none';
+
+	/* to refresh the market page and allow the overlay to work*/
+	window.location.href='/seller/market'
+}
+
+</script>
+</body>
+</html>

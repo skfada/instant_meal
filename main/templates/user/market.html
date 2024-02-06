@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 
-{% block title %}Dashboard Page{% endblock %}
-	{% block dashboard %} active{% endblock %}
+{% block title %}Market Page{% endblock %}
+	{% block market %} active{% endblock %}
 
-{% block heading %}Welcome {{session['user_name']}} to the Dashboard page{% endblock %}
+{% block heading %}Welcome {{session['user_name']}} to our market page{% endblock %}
 {% block body %}
 
 <section id="section_table">
@@ -12,28 +12,34 @@
 			<thead>
 				<th>
 					<tr>
-						<td>Oder ID</td>
-						<td>Oder Date</td>
-						<td>Buyer Name</td>
+						<td>Menu ID</td>
+						<td>Menu pic</td>
 						<td>Menu Name</td>
 						<td>Menu Price</td>
 						<td>Seller Name</td>
-						<td>Oder Status</td>
-						<td>Delivery Time</td>
+						<td class="actionhead">Take Action</td>
 					</tr>
 				</th>
 			</thead>
 			<tbody>
-				{% for order in orders %}
+				{% include 'user/includes/modal_viewinfo.html' %}
+				{% include 'user/includes/modal_buyitem.html' %}
+				{% for item in items %}
 				<tr>
-					<td>{{order.order_id}}</td>
-					<td>{{order.order_datetime}}</td>
-					<td>{{order.buyer_name}}</td>
-					<td>{{order.menu_name}}</td>
-					<td>N{{formatNumber(order.menu_price)}}</td>
-					<td>{{order.seller_name}}</td>
-					<td>{{order.order_status}}</td>
-					<td>{{order.delivery_datetime}}</td>
+					<td>{{item.menu_id}}</td>
+					<td>{{item.menu_picture}}</td>
+					<td>{{item.menu_name}}</td>
+					<td>N{{formatNumber(item.menu_price)}}</td>
+					<td>{{item.seller_name}}</td>
+					<td class="actioncolum">
+						<button class="small_infobtn" onclick="viewInfo(heading='{{item.menu_name}}', desc='{{item.menu_description}}')" type="button">View Info</button>
+						<form>
+							<input name="itemname" type="hidden">
+							<input name="price" type="hidden">
+							<input name="id" type="hidden">
+							<button class="small_buybtn" onclick="buyItem(itemname='{{item.menu_name}}', price='N{{formatNumber(item.menu_price)}}', itemid='{{item.menu_id}}', sellername='{{item.seller_name}}')" type="button">Buy Item</button>
+						</form>
+					</td>
 				</tr>
 				{% endfor %}
 			</tbody>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html>
+
+<body>
+
+
+<section id="section_modal_buyitem">
+	<div id="div_modal_buyitem">
+		<section class="modal_header">
+			<div id="modal_buy_title" class="modal_title">modal title</div>
+			<button class="close_btn" onclick="closebuyitem()">&times</button>
+		</section>
+		<div id="modal_buy_body" class="modal_body">message</div>
+
+		<form method="POST" action="{{url_for('user.buy_item')}}">
+			<input type="hidden" id="modalbuy_id" name="menu_id">
+			<button id="buy_normalbtn">Confirm  to Buy Item</button>
+		</form>
+	</div>
+
+</section>
+
+
+
+
+<script>
+
+
+function closebuyitem(){
+	const section_modal_buyitem = document.getElementById('section_modal_buyitem');
+	var overlay = document.getElementById('overlay');
+
+	section_modal_buyitem.style.display='none';
+
+	/*to prevent the ovaly front affecting clicks events t*/
+	overlay.style.opacity='0';
+	overlay.style.pointerEvents='none';
+
+	/*this will refresh the page to enable the ovalay work continiously */
+	window.location.href="/user/market";
+}
+</script>
+</body>
+</html>

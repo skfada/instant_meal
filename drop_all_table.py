@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 ''' this script will create all the tables listed below '''
-from main.database.dbModels import Users, GeneralJournal
+from main.database.dbModels import (Users,
+                                    GeneralJournal, Sellers, Market,
+                                    Orders)
 from main import app, db
 
 

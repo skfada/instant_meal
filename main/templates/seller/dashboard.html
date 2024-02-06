@@ -1,9 +1,9 @@
-{% extends "base.html" %}
+{% extends "seller_base.html" %}
 
 {% block title %}Dashboard Page{% endblock %}
 	{% block dashboard %} active{% endblock %}
 
-{% block heading %}Welcome {{session['user_name']}} to the Dashboard page{% endblock %}
+{% block heading %}Welcome {{session['seller_name']}} to the Dashboard page{% endblock %}
 {% block body %}
 
 <section id="section_table">
