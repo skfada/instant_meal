@@ -12,3 +12,6 @@ from main.sellers_routes.dashboard import seller
 from main.sellers_routes.upload_meal import seller
 from main.sellers_routes.view_profile import seller
 from main.sellers_routes.password_reset import seller
+from main.sellers_routes.take_order import seller
+from main.sellers_routes.dispatch_order import seller
+from main.sellers_routes.reject_item import seller

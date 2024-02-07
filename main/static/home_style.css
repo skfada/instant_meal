@@ -6,7 +6,7 @@ body{
 			/* BASE STYLE */
 			/* SECTION NAVBAR STYLE */
 #sec-navbar{
-	background-color:rgb(50,25,255);
+	background-color:rgb(0,115,0);
 	z-index:10;
 	display:flex;
 	justify-content:space-between;
@@ -79,49 +79,6 @@ button.close_btn{
 	border-radius:7px;
 	cursor:pointer;
 }
-
-.closereject_btn{
-	background-color:green;
-	color:white;
-	font-weight:bold;
-	font-size:1.1rem;
-	border:none;
-	border-radius:7px;
-	cursor:pointer;
-}
-
-.closereject_btn:hover{
-	background-color:white;
-	color:green;
-	font-weight:bold;
-	font-size:1.1rem;
-	border:none;
-	border-radius:7px;
-	cursor:pointer;
-}
-
-
-
-.confirmreject_btn{
-	background-color:red;
-	color:white;
-	font-weight:bold;
-	font-size:1.1rem;
-	border:none;
-	border-radius:7px;
-	cursor:pointer;
-}
-
-.confirmreject_btn:hover{
-	background-color:white;
-	color:red;
-	font-weight:bold;
-	font-size:1.1rem;
-	border:none;
-	border-radius:7px;
-	cursor:pointer;
-}
-
 
 button.close_btn:hover{
 	background-color:red;
@@ -474,8 +431,7 @@ button.close_btn:hover{
 
 
 				/* MODAL CONFIRM BUY HTML STYLE  */
-#section_modal_buyitem,
-#section_modal_rejectitem{
+#section_modal_buyitem{
 	display:none;
 	position:absolute;
 	top:40%;
@@ -488,8 +444,7 @@ button.close_btn:hover{
 
 }
 
-#div_modal_buyitem,
-#div_modal_rejectitem{
+#div_modal_buyitem{
 	border:1px solid yellow;
 	padding:10px;
 	border-radius:20px;
@@ -513,9 +468,7 @@ button.close_btn:hover{
 	padding-top:10px;
 }
 
-#buy_normalbtn,
-#reject_normalbtn,
-.normalbtn{
+#buy_normalbtn{
 	width:90%;
 	border-radius:10px;
 	background-color:green;
@@ -541,12 +494,11 @@ button.close_btn:hover{
 #section_table{
 	position:absolute;
 	top:25%;
-
 	right:5%;
+
 	width:80%;
 	width-max:80%;
 	text-align:center;
-	z-index:20;
 }
 
 #div_table{
@@ -574,8 +526,8 @@ button.close_btn:hover{
 }
 
 #div_table table tr:hover {
-	color:red;
-	background-color:white;
+	color:yellow;
+
 }
 
 #div_table table tbody td:hover{

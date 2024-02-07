@@ -3,7 +3,8 @@
 <html>
 <head>
 	<title>{% block title %}<!--REPLACE WITH PAGE TITLE-->{% endblock %}</title>
-	<link rel='stylesheet' href='{{url_for("static",filename="style.css")}}'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel='stylesheet' href='{{url_for("static",filename="user_style.css")}}'>
 </head>
 <body>
 <section id='sec-navbar'>
@@ -18,8 +19,8 @@
 			<li><div>Naira:{{session['user_fmt_budget']}}</div></li>
 			<li><a class="{% block logout %} {% endblock %}" href='{{url_for("user.logout")}}'>Logout</a></li>
 		{% else %}
-			{% block userlogin %}{% endblock %}
-			{% block sellerlogin %}{% endblock %}
+			<li><a class="{% block login %} {% endblock %}" href='{{url_for("user.login")}}'>Login</a></li>
+			<li><a class="{% block register %} {% endblock %}" href='{{url_for("user.register")}}'>Register</a></li>
 		{% endif %}
 	</ul>
 </section>

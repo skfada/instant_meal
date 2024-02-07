@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html>
+
+<body>
+
+
+<section id="section_modal_rejectitem">
+	<div id="div_modal_rejectitem">
+		<section class="modal_header">
+			<div id="modal_reject_title" class="modal_title">modal title</div>
+
+			<button class="close_btn" onclick="closerejectitem()">&times</button>
+		</section>
+		<div id="modal_reject_body" class="modal_body">message</div>
+
+		<form method="POST" action="{{url_for('seller.reject_item')}}">
+			<input id="modalreject_id" name="rejectid" type='hidden'>
+			<div>
+				<button class="closereject_btn" onclick="closerejectitem()" type="button">Close Button</button>
+				<button class="confirmreject_btn">Reject Order</button>
+			</div>
+		</form>
+	</div>
+
+</section>
+
+
+
+
+<script>
+
+
+function closerejectitem(){
+	const section_modal_rejectitem = document.getElementById('section_modal_rejectitem');
+	var overlay = document.getElementById('overlay');
+
+	section_modal_rejectitem.style.display='none';
+
+	/* to prevent the ovaly front affecting clicks events */
+	overlay.style.opacity='0';
+	overlay.style.pointerEvents='none';
+
+	/*this will refresh the page to enable the ovalay work continiously */
+	window.location.href="/seller/dashboard";
+}
+</script>
+</body>
+</html>

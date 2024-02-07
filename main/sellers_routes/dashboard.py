@@ -10,7 +10,10 @@ def dashboard():
     - to take users to the dashboard where they will have
     - access to links for other personalized purposes
     '''
+    seller_object = Sellers.query.filter_by(username=session['seller_name']).first()
+    session['seller_fmt_budget'] = fmtNumber(seller_object.wallet)
     order_obj = Orders.query.filter_by(seller_name=session['seller_name']).all()
+
     ''' i used .all() so it will enable me find the length of the object'''
     if not order_obj:
         flash('customers are yet to purchase your item. \

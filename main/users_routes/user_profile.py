@@ -152,6 +152,10 @@ def dashboard():
     - to take users to the dashboard where they will have
     - access to links for other personalized purposes
     '''
+    user_object = Users.query.filter_by(username=session["user_name"]).first()
+    session['user_fmt_budget'] = fmtNumber(user_object.wallet)
+
+
     order_obj = Orders.query.filter_by(buyer_name=session['user_name']).all()
     ''' i used .all() so it will enable me find the length of the object'''
     if not order_obj:
