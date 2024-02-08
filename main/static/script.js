@@ -85,6 +85,21 @@ function checkFlexGap() {
 }
 checkFlexGap();
 
+///////////////////////////////////////////////////////////
+// Password visibility toggle
+function togglePasswordVisibility() {
+  const passwordInput = document.getElementById("login_pwd2");
+  const toggleElement = document.querySelector(".password-toggler");
+
+  if (passwordInput.type === "password") {
+    passwordInput.type = "text";
+    toggleElement.textContent = "Hide"; // Update toggle text
+  } else {
+    passwordInput.type = "password";
+    toggleElement.textContent = "Show"; // Update toggle text
+  }
+}
+
 // https://unpkg.com/smoothscroll-polyfill@0.4.4/dist/smoothscroll.min.js
 
 /*
