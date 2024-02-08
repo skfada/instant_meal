@@ -37,10 +37,10 @@
   transition: all 0.3s;
 }
 
-.main-nav-link:hover,
+/* .main-nav-link:hover,
 .main-nav-link:active {
   color: #fff;
-}
+} */
 .nav-cta:link,
 .nav-cta:visited {
   background-color: #00a082;
