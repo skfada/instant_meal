@@ -49,10 +49,13 @@ box-shadow: 0 2.2rem 6.4rem rgba(0, 0, 0, 0.06);
         2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
 */
 
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 html {
   /* 10px / 16px = 0.625 = 62.5% */
@@ -65,7 +68,7 @@ html {
   /* scroll-behavior: smooth; */
 }
 body {
-  font-family: "Rubik", sans-serif;
+  /* font-family: "Rubik", sans-serif; */
   line-height: 1;
   font-weight: 400;
   color: #555;
