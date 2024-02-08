@@ -5,8 +5,9 @@
 *.dylib
 *.log
 *.tmp
-.vscode/
-.idea/
+*.vscode/
+*.idea/
 *.suo
 *.user
-.env
+*.env
+__pycache__

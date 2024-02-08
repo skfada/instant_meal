@@ -1,6 +1,4 @@
-from flask import Blueprint, render_template, url_for
-
-home = Blueprint("home", __name__, url_prefix="/")
+from main import *
 
 @home.route("/", strict_slashes=False)
 @home.route("/home", strict_slashes=False)

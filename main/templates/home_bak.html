@@ -1,3 +1,32 @@
+<!-- {% extends "home_base.html" %}
+
+{% block title %}Home Page{% endblock %}
+	{% block home %} active {% endblock %}
+
+
+{% block heading %}Welcome to our Home Page{% endblock %}
+
+{% block userlogin %}<li><a class="{% block user_login %} {% endblock %}" href="{{url_for('user.login')}}">Login as User</a></li>{% endblock %}
+{% block sellerlogin %}<li><a class="{% block seller_login %} {% endblock %}" href="{{url_for('seller.login')}}">Login as Seller</a></li>{% endblock %}
+
+{% block body %}
+
+
+
+
+
+
+
+
+
+{% endblock %}
+
+{% block javascript %}
+<script>
+
+
+</script>
+{% endblock %} -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,10 +47,8 @@
 		<h1 class="logo">Instant Meal</h1>
 		<nav class="main-nav">
 			<ul class="main-nav-list">
-				<li><a href="{{url_for('user.login')}}" class="main-nav-link" class="pop-up">User LogIn</a></li>
-				<li><a href="{{url_for('user.register')}}" class="main-nav-link nav-cta" class="pop-up">User SignUp</a></li>
-				<li><a href="{{url_for('seller.login')}}" class="main-nav-link" class="pop-up">Seller LogIn</a></li>
-				<li><a href="{{url_for('seller.register')}}" class="main-nav-link nav-cta" class="pop-up">Seller SignUp</a></li>
+				<li><a href="#sign-up" class="main-nav-link" class="pop-up">Log In</a></li>
+				<li><a href="#sign-up" class="main-nav-link nav-cta" class="pop-up">Sign Up</a></li>
 			</ul>
 		</nav>
 		<button class="btn-mobile-nav">
@@ -437,9 +464,9 @@
 			<div class="address-col">
 				<p class="footer-heading">Contact Us</p>
 				<address class="contacts">
-					<p class="address">#15, ALX portfolio project</p>
+					<p class="address">Cohort #15, ALX portfolio project</p>
 					<p>
-						<a class="footer-link" href="tel415-201-637:">+234 123 456 7890</a><br>
+						<a class="footer-link" href="tel415-201-637:">+234 906 666 6666</a><br>
 						<a class="footer-link" href="mailto:hello@instantmeal.com">hello@instantmeal.com</a>
 					</p>
 				</address>
