@@ -18,8 +18,10 @@
 		<h1 class="logo">Instant Meal</h1>
 		<nav class="main-nav">
 			<ul class="main-nav-list">
-				<li><a href="#sign-up" class="main-nav-link" class="pop-up">Log In</a></li>
-				<li><a href="#sign-up" class="main-nav-link nav-cta" class="pop-up">Sign Up</a></li>
+				<li><a href="{{url_for('user.login')}}" class="main-nav-link" class="pop-up">User LogIn</a></li>
+				<li><a href="{{url_for('user.register')}}" class="main-nav-link nav-cta" class="pop-up">User SignUp</a></li>
+				<li><a href="{{url_for('seller.login')}}" class="main-nav-link" class="pop-up">Seller LogIn</a></li>
+				<li><a href="{{url_for('seller.register')}}" class="main-nav-link nav-cta" class="pop-up">Seller SignUp</a></li>
 			</ul>
 		</nav>
 		<button class="btn-mobile-nav">
