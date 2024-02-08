@@ -18,6 +18,7 @@ swagger = Swagger(app)
 db = SQLAlchemy(app)
 
 ''' creating blueprints  '''
+home = Blueprint("home", __name__, url_prefix="/")
 market = Blueprint('market', __name__, url_prefix='/market')
 seller = Blueprint('seller', __name__, url_prefix='/seller')
 user = Blueprint('user', __name__, url_prefix='/user')
