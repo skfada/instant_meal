@@ -2,7 +2,6 @@
 const yearEl = document.querySelector(".year");
 const currentYear = new Date().getFullYear();
 yearEl.textContent = currentYear;
-
 ///////////////////////////////////////////////////////////
 // Make mobile navigation work
 
@@ -100,6 +99,103 @@ function togglePasswordVisibility() {
   }
 }
 
+///////////////////////////////////////////////////////////
+// Register visibility toggle (password1)
+function togglePasswordVisibility() {
+  const passwordInput = document.getElementById("reg_pwd1");
+  const toggleElement = document.querySelector(".password-toggler");
+
+  if (passwordInput.type === "password") {
+    passwordInput.type = "text";
+    toggleElement.textContent = "Hide"; // Update toggle text
+  } else {
+    passwordInput.type = "password";
+    toggleElement.textContent = "Show"; // Update toggle text
+  }
+}
+
+///////////////////////////////////////////////////////////
+// Register visibility toggle (password2)
+function togglePasswordVisibility_2() {
+  const passwordInput = document.getElementById("reg_pwd2");
+  const toggleElement = document.querySelector(".password-toggler_2");
+
+  if (passwordInput.type === "password") {
+    passwordInput.type = "text";
+    toggleElement.textContent = "Hide"; // Update toggle text
+  } else {
+    passwordInput.type = "password";
+    toggleElement.textContent = "Show"; // Update toggle text
+  }
+}
+
+///////////////////////////////////////////////////////////
+// Register visibility toggle (password1)
+function togglePasswordVisibility_3() {
+  const passwordInput = document.getElementById("login_pwd2");
+  const toggleElement = document.querySelector(".password-toggler");
+
+  if (passwordInput.type === "password") {
+    passwordInput.type = "text";
+    toggleElement.textContent = "Hide"; // Update toggle text
+  } else {
+    passwordInput.type = "password";
+    toggleElement.textContent = "Show"; // Update toggle text
+  }
+}
+
+///////////////////////////////////////////////////////////
+// Form validation for registration page
+// Valited password
+function checkPassword() {
+  var password = document.getElementById("reg_pwd1").value;
+  var confirmPassword = document.getElementById("reg_pwd2").value;
+
+  if (password !== confirmPassword) {
+    alert("Passwords do not match");
+    return false;
+  }
+  return true;
+}
+
+///////////////////////////////////////////////////////////
+// Redirect to User Register page
+function regLink() {
+  window.location.href = "/main/templates/user/register.html";
+}
+// Redirect to User login page
+function LoginLink() {
+  window.location.href = "/main/templates/user/login.html";
+}
+// Redirect to User login page
+function LoginLink() {
+  window.location.href = " /main/templates/seller/login.html";
+}
+// Redirect to User Register page
+function regLink() {
+  window.location.href = "/main/templates/seller/register.html";
+}
+
+///////////////////////////////////////////////////////////
+// Dropdown menu functionality
+function toggleDropdown() {
+  var dropdown = document.getElementById("myDropdown");
+  dropdown.classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function (event) {
+  if (!event.target.matches(".dropbtn")) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains("show")) {
+        openDropdown.classList.remove("show");
+      }
+    }
+  }
+};
 // https://unpkg.com/smoothscroll-polyfill@0.4.4/dist/smoothscroll.min.js
 
 /*
