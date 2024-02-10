@@ -51,51 +51,54 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Responsive Login Form</title>
+	<title>User Login Form</title>
 
 	<link rel="stylesheet" href="../../static/user_login.css">
 	<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
 </head>
 
 <body>
-	<section class="sign-up">
-		<div class="login-text">
-			<h1>Jump right back in</h1>
-			<p>Log in to continue</p>
-		</div>
-		<div class="container">
-			<div class="login-form-wrapper">
-				<div class="login-form">
-					<form method="POST" action="{{url_for('user.login')}}">
-						<div>
-							<label for="login_username">Username</label>
-							<input type="text" id="login_username" name="username" minlength="3" maxlength="20"
-								required>
-						</div>
 
-						<div class="password">
-							<label for="login_pwd2">Password</label>
-							<input type="password" id="login_pwd2" name="pwd" minlength="8" maxlength="60" required>
-							<span class="password-toggler" onclick="togglePasswordVisibility()">show</span>
-						</div>
+	<section class="sign-up" id="section_loginform">
+		<div id="div_loginform">
+			<div class="login-text">
+				<h1>Jump right back in (user)</h1>
+				<p>Log in to continue</p>
+			</div>
+			<div class="container">
+				<div class="login-form-wrapper">
+					<div class="login-form">
+						<form method="POST" action="{{url_for('user.login')}}">
+							<div>
+								<label for="login_username">Username</label>
+								<input type="text" id="login_username" name="username" minlength="3" maxlength="20"
+									required>
+							</div>
 
-						<!-- <div class="remember-me">
+							<div class="password">
+								<label for="login_pwd2">Password</label>
+								<input type="password" id="login_pwd2" name="pwd" minlength="8" maxlength="60" required>
+								<span class="password-toggler" onclick="togglePasswordVisibility_3()">show</span>
+							</div>
+
+							<!-- <div class="remember-me">
 						<input type="checkbox" id="remember_me" name="remember_me">
 						<label for="remember_me">Remember me</label>
 					</div> -->
 
-						<button type="submit" class="normalbtn">Login</button>
-					</form>
+							<button type="submit" class="normalbtn">Login</button>
+						</form>
 
-					<div class="small_divtext">Don't have an account? <button class="smallbtn"
-							onclick="regLink()">Create
-							account</button></div>
+						<div class="small_divtext">Don't have an account? <button class="smallbtn"
+								onclick="regLink()">Create
+								account</button></div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<script src="../../static/script.js"></script>
+	<script defer src="../../static/script.js"></script>
 </body>
 
 </html>

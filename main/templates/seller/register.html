@@ -1,4 +1,4 @@
-{% extends "seller_base.html" %}
+<!-- {% extends "seller_base.html" %}
 
 {% block title %}Sellers Register Page{% endblock %}
 	{% block register %} active{% endblock %}
@@ -6,47 +6,72 @@
 {% block heading %}Complete the below form to register{% endblock %}
 
 
-{% block body %}
+{% block body %} -->
 
 
-<section id="section_regform">
-	<div id="div_regform">
-		<form method="POST" action="{{url_for('seller.register')}}">
-			<div>User Name</div>
-			<input id="reg_username" name="username" minlength="3" maxlength="20"><br><br>
+<!DOCTYPE html>
+<html lang="en">
 
-			<div>Email Address</div>
-			<input id="reg_email" name="email" type="email" minlength="8" maxlength="60"><br><br>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Seller Register Form</title>
 
-			<div>Password</div>
-			<input id="reg_pwd1" name="pwd1" type="password" minlength="8" maxlength="60"><br><br>
+	<link rel="stylesheet" href="../../static/user_register.css">
+	<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+</head>
 
-			<div>Confirm Password</div>
-			<input id="reg_pwd2" name="pwd2" type="password" minlength="8" maxlength="60"><br><br>
+<body>
 
-			<button class="normalbtn">Submit Registration Form</button>
-		</form>
-		<div class="small_divtext">Already Have an account?</div>
-		<button class="smallbtn" onclick="loginLink()">Login Here</button>
-	</div>
-</section>
-
-
-
-
-
-
-
-
-{% endblock %}
-
+	<section class="sign-up" id="section_regform">
+		<div id="div_regform">
+			<div class="login-text">
+				<h1>Create your account (seller)</h1>
+				<p>Sign up to start using our services</p>
+			</div>
+			<div class="container">
+				<div class="login-form-wrapper">
+					<div class="login-form">
+						<form method="POST" action="{{url_for('seller.register')}}">
+							<div>
+								<label for="reg_username">Username</label>
+								<input type="text" id="reg_username" name="username" minlength="3" maxlength="20"
+									required>
+							</div>
 
 
-{% block javascript %}
-<script>
+							<div>
+								<label for="reg_email">Email</label>
+								<input type="email" id="reg_email" name="email" minlength="8" maxlength="60" required>
+							</div>
 
-function loginLink(){
-	window.location.href="/seller/login"
-}
-</script>
-{% endblock %}
+
+							<div class="password">
+								<label for="reg_pwd1">Password</label>
+								<input type="password" id="reg_pwd1" name="pwd1" minlength="8" maxlength="60" required>
+								<span class="password-toggler" onclick="togglePasswordVisibility()">show</span>
+							</div>
+
+							<div class="password">
+								<label for="reg_pwd2">Confirm Password</label>
+								<input type="password" id="reg_pwd2" name="pwd2" minlength="8" maxlength="60" required>
+								<span class="password-toggler_2" onclick="togglePasswordVisibility()">show</span>
+							</div>
+
+							<button class="normalbtn" onclick="checkPassword()">Continue</button>
+						</form>
+
+						<div class="small_divtext">Already Have an account?
+							<button class="smallbtn" onclick="LoginLink()">Login Here</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<script defer src="../../static/script.js"></script>
+</body>
+
+</html>

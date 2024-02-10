@@ -1,46 +1,69 @@
-{% extends "seller_base.html" %}
+<!-- {% extends "seller_base.html" %}
 
 {% block title %}Seller Login Page{% endblock %}
-	{% block login %} active {% endblock %}
+	{% block login %} active {% endblock %} -->
 
 
 <!--{% block heading %}Login with your username and password{% endblock %}-->
 
 
-{% block sellerlogin %}<li><a class="{% block seller_login %} {% endblock %}" href="{{url_for('seller.login')}}">Login as Seller</a></li>{% endblock %}
-{% block body %}
+<!-- {% block sellerlogin %}<li><a class="{% block seller_login %} {% endblock %}" href="{{url_for('seller.login')}}">Login as Seller</a></li>{% endblock %}
+{% block body %} -->
 
 
+<!DOCTYPE html>
+<html lang="en">
 
-<section id="section_loginform">
-	<div id="div_loginform">
-		<form method="POST" action="{{url_for('seller.login')}}">
-			<div>User Name</div>
-			<input id="login_username" name="username" minlength="3" maxlength="20"><br><br>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Seller Login Form</title>
 
-			<div>Confirm Password</div>
-			<input id="login_pwd2" name="pwd" type="password" minlength="8" maxlength="60"><br><br>
+	<link rel="stylesheet" href="../../static/user_login.css">
+	<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+</head>
 
-			<button class="normalbtn">Click to Login</button>
-		</form>
-		<div class="small_divtext">Dont Have an account?</div>
-		<button class="smallbtn" onclick="regLink()">Register Here</button>
-	</div>
-</section>
+<body>
 
+	<section class="sign-up" id="section_loginform">
+		<div id="div_loginform">
+			<div class="login-text">
+				<h1>Jump right back in (seller)</h1>
+				<p>Log in to continue</p>
+			</div>
+			<div class="container">
+				<div class="login-form-wrapper">
+					<div class="login-form">
+						<form method="POST" action="{{url_for('seller.login')}}">
+							<div>
+								<label for="login_username">Username</label>
+								<input type="text" id="login_username" name="username" minlength="3" maxlength="20"
+									required>
+							</div>
 
+							<div class="password">
+								<label for="login_pwd2">Password</label>
+								<input type="password" id="login_pwd2" name="pwd" minlength="8" maxlength="60" required>
+								<span class="password-toggler" onclick="togglePasswordVisibility_3()">show</span>
+							</div>
 
+							<!-- <div class="remember-me">
+						<input type="checkbox" id="remember_me" name="remember_me">
+						<label for="remember_me">Remember me</label>
+					</div> -->
 
+							<button type="submit" class="normalbtn">Login</button>
+						</form>
 
+						<div class="small_divtext">Don't have an account? <button class="smallbtn"
+								onclick="regLink()">Create
+								account</button></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<script defer src="../../static/script.js"></script>
+</body>
 
-
-{% endblock %}
-
-{% block javascript %}
-<script>
-
-function regLink(){
-	window.location.href="/seller/register"
-}
-</script>
-{% endblock %}
+</html>
