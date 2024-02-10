@@ -172,6 +172,9 @@
     height: 75vh;
     top: -50;
   }
+  .vendor-ddb {
+    min-width: 86%;
+  }
 }
 
 /********************/
