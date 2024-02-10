@@ -7,23 +7,6 @@
   font-family: "Poppins", sans-serif;
 }
 
-/*
-
-body {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #e6f6f3;
-}
-.wrapper {
-  position: relative;
-  max-width: 120rem;
-  width: 100%;
-  background: yellow;
-  padding: 30px;
-} */
-
 html {
   /* 10px / 16px = 0.625 = 62.5% */
   /* percentage of user's browser font-size setting */
@@ -34,6 +17,7 @@ html {
 
   /* scroll-behavior: smooth; */
 }
+
 body {
   display: flex;
   justify-content: center;
@@ -89,7 +73,8 @@ label:nth-child(1) {
   margin-top: 10px;
 }
 input[type="text"],
-input[type="password"] {
+input[type="password"],
+input[type="email"] {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
