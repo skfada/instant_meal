@@ -158,23 +158,23 @@ function checkPassword() {
   return true;
 }
 
-///////////////////////////////////////////////////////////
-// Redirect to User Register page
-function regLink() {
-  window.location.href = "/main/templates/user/register.html";
-}
-// Redirect to User login page
-function LoginLink() {
-  window.location.href = "/main/templates/user/login.html";
-}
-// Redirect to User login page
-function LoginLink() {
-  window.location.href = " /main/templates/seller/login.html";
-}
-// Redirect to User Register page
-function regLink() {
-  window.location.href = "/main/templates/seller/register.html";
-}
+// ///////////////////////////////////////////////////////////
+// // Redirect to User Register page
+// function regLink() {
+//   window.location.href = "/main/templates/user/register.html";
+// }
+// // Redirect to User login page
+// function LoginLink() {
+//   window.location.href = "/main/templates/user/login.html";
+// }
+// // Redirect to User login page
+// function LoginLink() {
+//   window.location.href = " /main/templates/seller/login.html";
+// }
+// // Redirect to User Register page
+// function regLink() {
+//   window.location.href = "/main/templates/seller/register.html";
+// }
 
 ///////////////////////////////////////////////////////////
 // Dropdown menu functionality
