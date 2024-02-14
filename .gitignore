@@ -11,3 +11,4 @@
 *.user
 *.env
 __pycache__
+forms.sh

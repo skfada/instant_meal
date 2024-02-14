@@ -1,0 +1,45 @@
+
+bcrypt
+flasgger
+
+python3 -m pip install Flask_MySQLdb
+python3 -m pip install mysqlclient
+
+Flask-BabelEx==0.9.4
+Flask-Bcrypt==1.0.1
+Flask-Bootstrap==3.3.7.1
+Flask-Cors==4.0.0
+Flask-Login==0.6.2
+Flask-Mail==0.9.1
+Flask-Principal==0.4.0
+Flask-Security==3.0.0
+Flask-Session==0.5.0
+Flask-Sessions==0.1.5
+python3 -m pip install Flask-SQLAlchemy
+Flask-WTF==1.2.1
+itsdangerous==2.0.0
+
+
+
+Jinja2==3.1.2
+jsonschema==4.20.0
+jsonschema-specifications==2023.12.1
+MarkupSafe==2.1.3
+
+mysqlclient==2.2.0
+packaging==23.2
+paramiko==2.12.0
+passlib==1.7.4
+pathlib2==2.3.7.post1
+pycodestyle==2.11.1
+pycparser==2.21
+PyNaCl==1.5.0
+PyYAML==6.0.1
+referencing==0.32.1
+requests==2.31.0
+rpds-py==0.16.2
+sgmllib3k==1.0.0
+six==1.16.0
+
+SQLAlchemy
+urllib3

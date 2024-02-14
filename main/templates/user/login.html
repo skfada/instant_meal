@@ -1,50 +1,3 @@
-<!-- {% extends "user_base.html" %}
-
-{% block title %}Login Page{% endblock %}
-	{% block login %} active {% endblock %}
-
-
-{% block heading %}Login with your username and password{% endblock %} -->
-
-<!--{% block userlogin %}<li><a class="{% block user_login %} {% endblock %}" href="{{url_for('user.login')}}">Login as User</a></li>{% endblock %}-->
-
-
-<!-- {% block body %} -->
-
-
-
-<!-- <section id="section_loginform">
-	<div id="div_loginform">
-		<form method="POST" action="{{url_for('user.login')}}">
-			<div>User Name</div>
-			<input id="login_username" name="username" minlength="3" maxlength="20"><br><br>
-
-			<div>Confirm Password</div>
-			<input id="login_pwd2" name="pwd" type="password" minlength="8" maxlength="60"><br><br>
-
-			<button class="normalbtn">Click to Login</button>
-		</form>
-		<div class="small_divtext">Dont Have an account?</div>
-		<button class="smallbtn" onclick="regLink()">Register Here</button>
-	</div>
-</section> -->
-
-
-
-
-
-
-
-<!-- {% endblock %}
-
-{% block javascript %}
-<script>
-
-	function regLink() {
-		window.location.href = "/user/register"
-	}
-</script>
-{% endblock %} -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -102,7 +55,7 @@
 	<script>
 		// Redirect to User Register page
 		function regLink() {
-			window.location.href = "/main/templates/user/register.html";
+			window.location.href = "/user/register";
 		}
 	</script>
 </body>
