@@ -15,11 +15,13 @@ The Instant Meal will serve as a market place for restaurant Owners and for vari
 - navigate into the instant_meal/ directory.
 
 ##### 2- MYSQL APPLICATION SHOULD BE INSTALLED ON YOUR SYTEM
-- ensure you have mysql server installed on your system to create the database from
-  the schema file with the command`cat main/database/schema.sql | mysql -uroot -p`
-  you will be prompted to enter password for mysql.
+- ensure you have mysql server installed on your system.
+- ensure you have python3 installed with the necessary modules.
+- type the command `cat main/database/schema.sql | mysql -uroot -p` to create the database.
+- type the command `./create_all_table.py` to create the tables.
 
-##### EXECUTE THE RUN.PY SCRIPT
+
+##### 3- EXECUTE THE RUN.PY SCRIPT
 - type the command `python3 run.py` or `./run.py` in your console to launch the application
 - copy the url from the console eg `http://127.0.0.1:5000` and paste to your browser for usage.
 
