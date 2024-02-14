@@ -32,7 +32,7 @@
 			<div class="container">
 				<div class="login-form-wrapper">
 					<div class="login-form">
-						<form method="POST" action="{{url_for('seller.register')}}">
+						<form method="POST" action="{{url_for('seller.register')}}" onsubmit="return checkPassword()">
 							<div>
 								<label for="reg_username">Username</label>
 								<input type="text" id="reg_username" name="username" minlength="3" maxlength="20"
@@ -57,7 +57,7 @@
 								<input type="password" id="reg_pwd2" name="pwd2" minlength="8" maxlength="60" required>
 								<span class="password-toggler_2" onclick="togglePasswordVisibility_2()">show</span>
 							</div>
-
+							<span id="passwordError"></span>
 							<button class="normalbtn" onclick="checkPassword()">Continue</button>
 						</form>
 
