@@ -22,30 +22,22 @@
 			<ul class="main-nav-list">
 				<div class="dropdown">
 					<div class="dropdown-button">
-						<!-- <li><a href="{{url_for('user.login')}}" class="main-nav-link nav-cta" class="pop-up">Customers
-								<i class="uil uil-arrow-down drop"></i></a>
-						</li> -->
 						<button class="dropbtn">Customers<i class="uil uil-arrow-down drop"></i></button>
 					</div>
 					<div class="dropdown-content">
-						<a href="../templates/user/login.html" class="links">Log in</a>
-						<a href="../templates/user/register.html" class="links">Sign Up</a>
+						<a href="{{url_for('user.login')}}" class="links">Log in</a>
+						<a href="{{url_for('user.register')}}" class="links">Sign Up</a>
 					</div>
 				</div>
 				<div class="dropdown">
 					<div class="dropdown-button">
-						<!-- <li><a href="{{url_for('user.register')}}" class="main-nav-link nav-cta"
-								class="pop-up">Vendors<i class="uil uil-arrow-down drop"></i></a>
-						</li> -->
 						<button class="dropbtn">Vendors<i class="uil uil-arrow-down drop"></i></button>
 					</div>
 					<div class="dropdown-content  vendor-ddb">
-						<a href="../templates/seller/login.html">Log in</a>
-						<a href="../templates/seller/register.html">Sign Up</a>
+						<a href="{{url_for('seller.login')}}">Log in</a>
+						<a href="{{url_for('seller.register')}}">Sign Up</a>
 					</div>
 				</div>
-				<!-- <li><a href="{{url_for('seller.login')}}" class="main-nav-link" class="pop-up">Seller LogIn</a></li>
-				<li><a href="{{url_for('seller.register')}}" class="main-nav-link nav-cta" class="pop-up">Seller SignUp</a></li> -->
 			</ul>
 		</nav>
 		<button class="btn-mobile-nav">
