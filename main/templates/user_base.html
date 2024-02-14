@@ -4,26 +4,35 @@
 <head>
 	<title>{% block title %}<!--REPLACE WITH PAGE TITLE-->{% endblock %}</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../static/bootstrap-5.3.2-dist/css/bootstrap.min.css">
 	<link rel='stylesheet' href='{{url_for("static",filename="user_style.css")}}'>
 </head>
 <body>
-<section id='sec-navbar'>
-	<img src="{{url_for('static',filename='images/logo.png')}}">
+<nav class="navbar navbar-light bg-warning" id='sec-navbar'>
+	<div class="container-fluid">
+		<div class="navbar-brand text-success"><h1>Instant Meal</h1></div>
 
-	<ul>
-		<li><a class="{% block home %} {% endblock %}" href='{{url_for("home.home_page")}}'>Home</a></li>
-		{% if 'user_name' in session %}
-			<li><a class="{% block market %} {% endblock %}" href='{{url_for("user.market")}}'>Market</a></li>
-			<li><a class="{% block dashboard %} {% endblock %}" href='{{url_for("user.dashboard")}}'>Dashboard</a></li>
-			<li><div>Welcome {{session['user_name']}}</div></li>
-			<li><div>Naira:{{session['user_fmt_budget']}}</div></li>
-			<li><a class="{% block logout %} {% endblock %}" href='{{url_for("user.logout")}}'>Logout</a></li>
-		{% else %}
-			<li><a class="{% block login %} {% endblock %}" href='{{url_for("user.login")}}'>Login</a></li>
-			<li><a class="{% block register %} {% endblock %}" href='{{url_for("user.register")}}'>Register</a></li>
-		{% endif %}
-	</ul>
-</section>
+		<ul class="nav nav-pills nav-justified ">
+			{% if 'user_name' in session %}
+				<li><div>Welcome {{session['user_name']}}</div></li>
+				<li><div>Naira:{{session['user_fmt_budget']}}</div></li>
+			{% endif %}
+		</ul>
+		<div class="">
+			<ul class="nav nav-pills nav-justified">
+			<li><a class="nav-link bg-success active" aria-current="page" href='{{url_for("home.home_page")}}'>Home</a></li>
+			{% if 'user_name' in session %}
+				<li><a class="nav-link active" href='{{url_for("user.market")}}'>Market</a></li>
+				<li><a class="nav-link active" href='{{url_for("user.dashboard")}}'>Dashboard</a></li>
+				<li><a class="nav-link active" href='{{url_for("user.logout")}}'>Logout</a></li>
+			{% else %}
+				<li><a class="nav-link active" href='{{url_for("user.login")}}'>Login</a></li>
+				<li><a class="nav-link active" href='{{url_for("user.register")}}'>Register</a></li>
+			{% endif %}
+		</ul>
+		</div>
+	</div>
+</nav>
 
 
 
