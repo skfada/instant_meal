@@ -21,7 +21,7 @@
 			<div class="container">
 				<div class="login-form-wrapper">
 					<div class="login-form">
-						<form method="POST" action="{{url_for('user.register')}}" onsubmit="return checkPassword()">
+						<form method="POST" action="{{url_for('user.register')}}">
 							<div>
 								<label for="reg_username">Username</label>
 								<input type="text" id="reg_username" name="username" minlength="3" maxlength="20"
