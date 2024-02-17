@@ -12,10 +12,10 @@
 	<div class="container-fluid">
 		<div class="navbar-brand text-success"><h1>Instant Meal</h1></div>
 
-		<ul class="nav nav-pills nav-justified ">
+		<ul class="nav nav-justified text-success">
 			{% if 'user_name' in session %}
-				<li><div>Welcome {{session['user_name']}}</div></li>
-				<li><div>Naira:{{session['user_fmt_budget']}}</div></li>
+				<li><h4>Welcome {{session['user_name']}}</h4></li>
+				<li><h4>Naira:{{session['user_fmt_budget']}}</h4></li>
 			{% endif %}
 		</ul>
 		<div class="">
