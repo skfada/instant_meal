@@ -4,26 +4,35 @@
 <head>
 	<title>{% block title %}<!--REPLACE WITH PAGE TITLE-->{% endblock %}</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../static/bootstrap-5.3.2-dist/css/bootstrap.min.css">
 	<link rel='stylesheet' href='{{url_for("static",filename="seller_style.css")}}'>
 </head>
 <body>
-<section id='sec-navbar'>
-	<img src="{{url_for('static',filename='images/logo.png')}}">
+	<nav class="navbar navbar-light bg-warning" id='sec-navbar'>
+		<div class="container-fluid">
+			<div class="navbar-brand text-success"><h1>Instant Meal</h1></div>
 
-	<ul>
-		<li><a class="{% block home %} {% endblock %}" href='{{url_for("home.home_page")}}'>Home</a></li>
-		{% if 'seller_name' in session %}
-			<li><a class="{% block market %} {% endblock %}" href='{{url_for("seller.market")}}'>Market</a></li>
-			<li><a class="{% block dashboard %} {% endblock %}" href='{{url_for("seller.dashboard")}}'>Dashboard</a></li>
-			<li><div>Welcome {{session['seller_name']}}</div></li>
-			<li><div>Naira:{{session['seller_fmt_budget']}}</div></li>
-			<li><a class="{% block logout %} {% endblock %}" href='{{url_for("seller.logout")}}'>Logout</a></li>
-		{% else %}
-		<li><a class="{% block login %} {% endblock %}" href='{{url_for("seller.login")}}'>Login</a></li>
-		<li><a class="{% block register %} {% endblock %}" href='{{url_for("seller.register")}}'>Register</a></li>
-		{% endif %}
-	</ul>
-</section>
+			<ul class="nav nav-justified text-success">
+				{% if 'seller_name' in session %}
+					<li><h4>Welcome {{session['seller_name']}}</h4></li>
+					<li><h4>Naira:{{session['seller_fmt_budget']}}</h4></li>
+				{% endif %}
+			</ul>
+			<div class="">
+				<ul class="nav nav-pills nav-justified">
+				<li><a class="nav-link bg-success active" aria-current="page" href='{{url_for("home.home_page")}}'>Home</a></li>
+				{% if 'seller_name' in session %}
+					<li><a class="nav-link active" href='{{url_for("seller.market")}}'>Market</a></li>
+					<li><a class="nav-link active" href='{{url_for("seller.dashboard")}}'>Dashboard</a></li>
+					<li><a class="nav-link active" href='{{url_for("seller.logout")}}'>Logout</a></li>
+				{% else %}
+					<li><a class="nav-link active" href='{{url_for("seller.login")}}'>Login</a></li>
+					<li><a class="nav-link active" href='{{url_for("seller.register")}}'>Register</a></li>
+				{% endif %}
+			</ul>
+			</div>
+		</div>
+	</nav>
 
 
 <section id='sec_flashbar'>
