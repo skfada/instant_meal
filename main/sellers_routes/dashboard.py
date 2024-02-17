@@ -13,6 +13,9 @@ def dashboard():
     seller_object = Sellers.query.filter_by(username=session['seller_name']).first()
     session['seller_fmt_budget'] = fmtNumber(seller_object.wallet)
     order_obj = Orders.query.filter_by(seller_name=session['seller_name']).all()
+    if seller_object.company_address == None:
+        flash('Kindly Update Details to continue', 'info')
+        return redirect(url_for('seller.update'))
 
     ''' i used .all() so it will enable me find the length of the object'''
     if not order_obj:
