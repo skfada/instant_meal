@@ -5,7 +5,7 @@ body{
 
 			/* BASE STYLE */
 			/* SECTION NAVBAR STYLE */
-/*
+
 #sec-navbar{
 	background-color:rgb(255,50,25);
 	z-index:10;
@@ -14,7 +14,7 @@ body{
 	align-item:center;
 	padding:5px;
 	height:70px;
-	box-shadow:0 5px 15px yellow;
+	/*box-shadow:0 5px 15px yellow;*/
 
 }
 
@@ -39,7 +39,7 @@ body{
 	color:black;
 	box-shadow:0 5px 15px yellow;
 }
-*/
+
 .active{
 	background-color:black;
 	box-shadow:0 5px 15px yellow;
