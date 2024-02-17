@@ -20,6 +20,7 @@
 						<td>Seller Name</td>
 						<td>Oder Status</td>
 						<td>Delivery Time</td>
+						<td class="actionhead">Take Action</td>
 					</tr>
 				</th>
 			</thead>
@@ -33,6 +34,23 @@
 					<td>{{orders.seller_name}}</td>
 					<td>{{orders.order_status}}</td>
 					<td>{{orders.delivery_datetime}}</td>
+					<td class="actioncolum">
+						<form>
+							<input name="reject_menuid" type="hidden">
+
+							<button class="small_buybtn" onclick="rejectOrder(orderId='{{orders.order_id}}', itemname='{{orders.menu_name}}', price='{{formatNumber(orders.menu_price)}}')" type="button">Reject Order</button>
+						</form>
+
+						<form method='POST' action='{{url_for("seller.take_order")}}'>
+							<input id='take_menuid' name='take_menuid' value='{{orders.order_id}}' type='hidden'>
+						<button class="small_infobtn" type="submit">Take Order</button>
+						</form>
+
+						<form method='POST' action='{{url_for("seller.dispatch_order")}}'>
+							<input id='dispatch_menuid' name='dispatch_menuid' value='{{orders.order_id}}' type='hidden'>
+						<button class="small_infobtn" type="submit">Dispatch Order</button>
+						</form>
+					</td>
 				</tr>
 			</tbody>
 		</table>
