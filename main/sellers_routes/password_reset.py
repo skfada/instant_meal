@@ -22,7 +22,7 @@ def password_reset():
         ''' checking if user already exist in the database '''
         seller_object = Sellers.query.filter_by(company_email=request.form["email"]).first()
 
-        if seller_object and seller_object.email == request.form["email"]:
+        if seller_object and seller_object.company_email == request.form["email"]:
             hash_pwd = generate_password_hash(request.form["pwd2"]).decode("utf-8")
 
             """ seeting new password """
