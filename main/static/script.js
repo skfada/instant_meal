@@ -147,13 +147,27 @@ function togglePasswordVisibility_3() {
 ///////////////////////////////////////////////////////////
 // Form validation for registration page
 // Valited password
+// function checkPassword() {
+//   var password = document.getElementById("reg_pwd1").value;
+//   var confirmPassword = document.getElementById("reg_pwd2").value;
+
+//   if (password !== confirmPassword) {
+//     alert("Passwords do not match");
+//     return false;
+//   }
+//   return true;
+// }
+
 function checkPassword() {
   var password = document.getElementById("reg_pwd1").value;
   var confirmPassword = document.getElementById("reg_pwd2").value;
+  var passwordError = document.getElementById("passwordError"); // Get the error message element
 
   if (password !== confirmPassword) {
-    alert("Passwords do not match");
+    passwordError.textContent = "Passwords do not match."; // Update the error message
     return false;
+  } else {
+    passwordError.textContent = ""; // Clear the error message if passwords match
   }
   return true;
 }
