@@ -51,7 +51,6 @@ body {
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-
 .login-form-wrapper {
   padding: 20px;
 }
@@ -132,4 +131,13 @@ span {
 }
 .normalbtn:hover {
   background-color: #008068;
+}
+#passwordError {
+  position: absolute;
+  top: 54rem;
+  left: 60rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #ff0000;
+  margin: auto;
 }
