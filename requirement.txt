@@ -2,8 +2,8 @@
 bcrypt
 flasgger
 
-python3 -m pip install Flask_MySQLdb
-python3 -m pip install mysqlclient
+Flask_MySQLdb
+mysqlclient
 
 Flask-BabelEx==0.9.4
 Flask-Bcrypt==1.0.1
@@ -15,7 +15,7 @@ Flask-Principal==0.4.0
 Flask-Security==3.0.0
 Flask-Session==0.5.0
 Flask-Sessions==0.1.5
-python3 -m pip install Flask-SQLAlchemy
+Flask-SQLAlchemy
 Flask-WTF==1.2.1
 itsdangerous==2.0.0
 
