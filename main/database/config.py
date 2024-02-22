@@ -7,4 +7,5 @@ host = 'localhost'
 database = 'instant_meal'
 
 CKRIT = urandom(20)
-DB_URI = f'mysql+mysqldb://{user}:{pwd}@{host}/{database}'
+DB_URI_MYSQL = f'mysql+mysqldb://{user}:{pwd}@{host}/{database}'
+DB_URI = f'sqlite:///instantmeal.db'
