@@ -1,6 +1,6 @@
 {% extends "seller_base.html" %}
 
-{% block title %}Market Page{% endblock %}
+{% block title %}Seller|Market Page{% endblock %}
 	{% block market %} active{% endblock %}
 
 {% block heading %}Welcome {{session['seller_name']}} to our market page{% endblock %}
@@ -23,7 +23,7 @@
 			</thead>
 			<tbody>
 				{% include 'seller/includes/modal_viewinfo.html' %}
-				{% include 'seller/includes/modal_buyitem.html' %}
+				{% include 'seller/includes/modal_drop_item.html' %}
 				{% for item in items %}
 				<tr>
 					<td>{{item.menu_id}}</td>
@@ -37,7 +37,7 @@
 							<input name="itemname" type="hidden">
 							<input name="price" type="hidden">
 							<input name="id" type="hidden">
-							<button class="small_buybtn" onclick="buyItem(itemname='{{item.menu_name}}', price='N{{formatNumber(item.menu_price)}}', id='{{item.id}}')" type="button">Buy Item</button>
+							<button class="small_buybtn" onclick="dropItem(itemname='{{item.menu_name}}', price='N{{formatNumber(item.menu_price)}}', itemid='{{item.menu_id}}')" type="button">Remove Item</button>
 						</form>
 					</td>
 				</tr>
@@ -83,20 +83,20 @@ function viewInfo(val1='', val2=''){
 }
 
 
-function buyItem(itemname='', price='', id=''){
+function dropItem(itemname='', price='', itemid=''){
 	const overlay = document.getElementById('overlay');
-	const section_modal_buyitem = document.getElementById('section_modal_buyitem');
-	const modal_buy_title = document.getElementById('modal_buy_title');
-	const modal_buy_body = document.getElementById('modal_buy_body');
+	const section_modal_drop = document.getElementById('section_modal_drop');
+	const modal_drop_title = document.getElementById('modal_drop_title');
+	const modal_drop_body = document.getElementById('modal_drop_body');
 
 	/* varaibles for the form inpu id */
-	const modalbuy_id = document.getElementById('modalbuy_id');
+	const modaldrop_id = document.getElementById('modaldrop_id');
 
 	/* passing values to the modal confirmation form */
-	modalbuy_id.value = id;
+	modaldrop_id.value = itemid;
 
 	/* changing the style effects */
-	section_modal_buyitem.style.display='block';
+	section_modal_drop.style.display='block';
 	overlay.style.position="fixed";
 	overlay.style.top="0";
 	overlay.style.right="0";
@@ -108,15 +108,15 @@ function buyItem(itemname='', price='', id=''){
 
 	/* passing values dynamically */
 
-	modal_buy_title.innerHTML = itemname;
+	modal_drop_title.innerHTML = itemname;
 
 	var itemName = "Item Name: " + itemname + "<br>";
 	var itemPrice = "Price: " + price + "<br>";
-	var itemID = "ID NO.: " + id;
-	var conclude = "<h5 style='color:yellow'>by clicking the below you are confirmation to buy the above item</h5>";
+	var itemID = "ID NO.: " + itemid;
+	var conclude = "<h5 style='color:yellow'>by clicking 'Remove Button', you are confirmation to remove the above item from the market</h5>";
 	var message = itemName + itemPrice + itemID + conclude;
 
-	modal_buy_body.innerHTML = message;
+	modal_drop_body.innerHTML = message;
 }
 
 
