@@ -475,7 +475,8 @@ button.close_btn:hover{
 
 				/* MODAL CONFIRM BUY HTML STYLE  */
 #section_modal_buyitem,
-#section_modal_rejectitem{
+#section_modal_rejectitem,
+#section_modal_drop{
 	display:none;
 	position:absolute;
 	top:40%;
@@ -489,7 +490,8 @@ button.close_btn:hover{
 }
 
 #div_modal_buyitem,
-#div_modal_rejectitem{
+#div_modal_rejectitem,
+#div_modal_drop{
 	border:1px solid yellow;
 	padding:10px;
 	border-radius:20px;
