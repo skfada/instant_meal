@@ -12,7 +12,7 @@ class Users(db.Model):
     """ bio information update """
     first_name = db.Column(db.String(20))
     last_name = db.Column(db.String(20))
-    date_of_birth =  db.Column(db.DateTime())
+    date_of_birth =  db.Column(db.Date)
     occupation = db.Column(db.String(20))
     phone_no = db.Column(db.String(20))
     """ address information """
@@ -20,11 +20,11 @@ class Users(db.Model):
     State_of_residence =  db.Column(db.String(20))
     lga_residence =  db.Column(db.String(20))
     house_address = db.Column(db.String(150))
-    reg_date = db.Column(db.DateTime(), default=datetime.utcnow)
-    last_login = db.Column(db.DateTime(), default=datetime.utcnow)
+    reg_date = db.Column(db.DateTime, default=datetime.utcnow)
+    last_login = db.Column(db.DateTime, default=datetime.utcnow)
     login_attempt = db.Column(db.Integer(), default=0)
     profile_pic = db.Column(db.String(100))
-    orders = db.Relationship('Orders', backref='user', lazy=True)
+    orders = db.relationship('Orders', backref='user', lazy=True)
 
 
 ''' creating class for sellers table '''
@@ -37,7 +37,7 @@ class Sellers(db.Model):
     """ company information update """
     company_name = db.Column(db.String(100))
     company_reg_no = db.Column(db.String(15))
-    year_of_establishment =  db.Column(db.DateTime())
+    year_of_establishment =  db.Column(db.Date)
     occupation = db.Column(db.String(20))
     company_phone_no = db.Column(db.String(20))
     """ address of the company information """
@@ -45,25 +45,25 @@ class Sellers(db.Model):
     State_of_opration =  db.Column(db.String(20))
     lga_operation =  db.Column(db.String(20))
     company_address = db.Column(db.String(150))
-    reg_date = db.Column(db.DateTime(), default=datetime.utcnow)
-    last_login = db.Column(db.DateTime(), default=datetime.utcnow)
+    reg_date = db.Column(db.DateTime, default=datetime.utcnow)
+    last_login = db.Column(db.DateTime, default=datetime.utcnow)
     login_attempt = db.Column(db.Integer(), default=0)
     profile_pic = db.Column(db.String(100))
-    menu = db.Relationship('Market', backref='seller', lazy=True)
-    
+    menu = db.relationship('Market', backref='seller', lazy=True)
+
 
 
 class GeneralJournal(db.Model):
     txn_id = db.Column(db.Integer(), primary_key=True)
-    txn_date = db.Column(db.DateTime(), default=datetime.utcnow)
+    txn_date = db.Column(db.DateTime, default=datetime.utcnow)
     sender_username = db.Column(db.String(20))
     receiver_username = db.Column(db.String(20))
-    description = db.Column(db.String(150))    
+    description = db.Column(db.String(150))
     dr_amnt = db.Column(db.Integer(), default=0)
     cr_amnt = db.Column(db.Integer(), default=0)
     sender_wallet = db.Column(db.Integer(), default=0)
     receiver_wallet = db.Column(db.Integer(), default=0)
-    
+
 
 class Market(db.Model):
     menu_id = db.Column(db.Integer(), primary_key=True)
@@ -74,16 +74,16 @@ class Market(db.Model):
     menu_price =  db.Column(db.Integer(), nullable=False ,default=0)
     menu_description =  db.Column(db.String(150))
     menu_picture =  db.Column(db.String(100))
-    
-    
+
+
 class Orders(db.Model):
     order_id = db.Column(db.Integer(), primary_key=True)
     seller_id = db.Column(db.ForeignKey(Sellers.id))
     buyer_id = db.Column(db.ForeignKey(Users.id))
     seller_name = db.Column(db.String(20))
     buyer_name = db.Column(db.String(20))
-    order_datetime = db.Column(db.DateTime(), default=datetime.utcnow)
+    order_datetime = db.Column(db.DateTime, default=datetime.utcnow)
     menu_name = db.Column(db.String(20), nullable=False)
     menu_price = db.Column(db.Integer(), nullable=False ,default=0)
-    order_status = db.Column(db.String(15), default='pending')    
-    delivery_datetime = db.Column(db.DateTime())
+    order_status = db.Column(db.String(15), default='pending')
+    delivery_datetime = db.Column(db.DateTime)
