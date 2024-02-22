@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html>
+
+<body>
+
+
+<section id="section_modal_drop">
+	<div id="div_modal_drop">
+		<section class="modal_header">
+			<div id="modal_drop_title" class="modal_title">modal title</div>
+
+			<button class="close_btn" onclick="closedropitem()">&times</button>
+		</section>
+		<div id="modal_drop_body" class="modal_body">message</div>
+
+		<form method="POST" action="{{url_for('seller.drop_item')}}">
+			<input id="modaldrop_id" name="dropid" type='hidden'>
+			<div>
+				<button class="closereject_btn" onclick="closedropitem()" type="button">Close Button</button>
+				<button class="confirmreject_btn">Remove Item</button>
+			</div>
+		</form>
+	</div>
+
+</section>
+
+
+
+
+<script>
+
+
+function closedropitem(){
+	const section_modal_drop = document.getElementById('section_modal_drop');
+	var overlay = document.getElementById('overlay');
+
+	section_modal_drop.style.display='none';
+
+	/* to prevent the ovaly front affecting clicks events */
+	overlay.style.opacity='0';
+	overlay.style.pointerEvents='none';
+
+	/*this will refresh the page to enable the ovalay work continiously */
+	window.location.href="/seller/market";
+}
+</script>
+</body>
+</html>
