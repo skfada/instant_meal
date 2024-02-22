@@ -12,13 +12,13 @@
 			<thead>
 				<th>
 					<tr>
-						<td>Oder ID</td>
-						<td>Oder Date</td>
+						<td>Order ID</td>
+						<td>Order Date</td>
 						<td>Buyer Name</td>
 						<td>Menu Name</td>
 						<td>Menu Price</td>
 						<td>Seller Name</td>
-						<td>Oder Status</td>
+						<td>Order Status</td>
 						<td>Delivery Time</td>
 						<td class="actionhead">Take Action</td>
 					</tr>
@@ -39,8 +39,7 @@
 					<td class="actioncolum">
 						<form>
 							<input name="reject_menuid" type="hidden">
-
-							<button class="small_buybtn" onclick="rejectOrder(orderId='{{order.order_id}}', itemname='{{order.menu_name}}', price='{{formatNumber(order.menu_price)}}')" type="button">Reject Order</button>
+							<button class="small_buybtn" onclick="rejectOrder(orderId='{{order.order_id}}', itemname='{{order.menu_name}}', price='{{formatNumber(order.menu_price)}}')" type="button"> Reject Order </button>
 						</form>
 
 						<form method='POST' action='{{url_for("seller.take_order")}}'>
@@ -57,9 +56,8 @@
 				{% endfor %}
 			</tbody>
 		</table>
-		<!--<button id="uploadlink" onclick="addNewItem()" class="small_infobtn">Add New Item To Sell</button>-->
+		<button id="uploadlink" onclick="addNewItem()" class="small_infobtn">Add New Item To Sell</button>
 	</div>
-
 </section>
 
 
@@ -73,8 +71,6 @@
 
 {% block javascript %}
 <script>
-
-
 function takeOrder(orderId=''){
 	const overlay = document.getElementById('overlay');
 	const section_modal_buyitem = document.getElementById('section_modal_buyitem');
@@ -150,10 +146,10 @@ function rejectOrder(orderId='', itemname='', price='' ){
 }
 
 
-/*
+
 function addNewItem(){
 	window.location.href='/seller/upload_meal';
 }
-*/
+
 </script>
 {% endblock %}
