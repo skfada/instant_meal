@@ -31,7 +31,7 @@ def update():
             '''updating the existin record'''
             user_object.first_name = first_name
             user_object.last_name = last_name
-            user_object.date_of_birth = date_of_birth
+            user_object.date_of_birth = datetime.strptime(date_of_birth, '%Y-%m-%d').date()
             user_object.occupation = occupation
             user_object.phone_no = phone_no
             user_object.country_of_residence = country
