@@ -12,6 +12,7 @@ from datetime import datetime
 app = Flask(__name__, template_folder='templates', static_folder='static')
 """ configuring the app """
 app.config['SECRET_KEY'] = CKRIT
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = DB_URI
 
 swagger = Swagger(app)
