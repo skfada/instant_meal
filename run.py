@@ -18,5 +18,4 @@ port = 8000
 debug = True
 
 if __name__ == "__main__":
-    with app.app_context():
-        app.run(host=host, debug=debug)
+    app.run(host=host, debug=debug)
