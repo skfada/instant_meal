@@ -1,11 +1,2 @@
-from urllib.parse import quote_plus
-from os import urandom
-''' creating URI demo credential for the database connection '''
-user = 'instant_meal'
-pwd = quote_plus('instantmeal@2024')
-host = 'localhost'
-database = 'instant_meal'
-
-CKRIT = urandom(20)
-DB_URI_MYSQL = f'mysql+mysqldb://{user}:{pwd}@{host}/{database}'
+CKRIT = '048441b8e43b1f2e9ef82ff36998a2fec011c33c76dd61ebf01c7a4da14b954f93a65bd74da1c4eaf76b23fd33cd55663bd3'
 DB_URI = f'sqlite:///instantmeal.db'
