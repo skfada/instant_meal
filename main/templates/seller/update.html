@@ -1,42 +1,74 @@
 {% extends "seller_base.html" %}
 
 {% block title %}Sellers Update Profile{% endblock %}
-	{% block update %} active{% endblock %}
+{% block update %} active{% endblock %}
 
 {% block heading %}Welcome {{session['seller_name']}} to the Seller's update page{% endblock %}
 
 {% block body %}
-<section id="section_updateform">
+<section id="section_updateform" class="container">
+	<!-- <div class="title">Update Profile</div> -->
 	<div id="div_regform">
 		<form method="POST" action="{{url_for('seller.update')}}">
-			<div>Company Name</div>
-			<input id="reg_username" name="company_name"  maxlength="20" ><br><br>
+			<div class="title">Update Profile</div>
+			<div class="user-details">
+				<div class="input-box">
+					<span class="details">Company Name</span>
+					<input id="reg_username" name="company_name" maxlength="20"
+						placeholder="Enter your company name"><br><br>
+				</div>
 
-			<div>Company Registration No</div>
-			<input id="reg_email" name="company_reg_no"  maxlength="60" ><br><br>
+				<div class="input-box">
+					<span class="details">Company Registration NO</span>
+					<input id="reg_email" name="company_reg_no" maxlength="60"
+						placeholder="Enter registration number"><br><br>
+				</div>
 
-			<div>Year of Establishment</div>
-			<input id="reg_pwd1" name="date_of_establishment" type="date" ><br><br>
+				<div class="input-box">
+					<span class="details">Year of Establishment</span>
+					<input id="reg_pwd1" name="date_of_establishment" type="date"><br><br>
+				</div>
 
-			<div>Type of Service Rendered</div>
-			<input id="reg_pwd2" name="type_of_service" maxlength="60" ><br><br>
-			
-			<div>Company's Phone Number</div>
-			<input id="reg_pwd2" name="company_phone_no" minlength="8" maxlength="16" ><br><br>
-			
-			<div>Country of Company</div>
-			<input id="reg_pwd2" name="country_of_operation" type="country" maxlength="60" ><br><br>
-			
-			<div>State of Company Location</div>
-			<input id="reg_pwd2" name="State_of_opration" maxlength="60"><br><br>
-			
-			<div>LGA of Company</div>
-			<input id="reg_pwd2" name="lga_operation" maxlength="60" ><br><br>
-			
-			<div>Deatailed Company Address</div>
-			<input id="reg_pwd2" name="company_address" maxlength="60" ><br><br>
+				<div class="input-box">
+					<span class="details">Type of Service Rendered</span>
+					<input id="reg_pwd2" name="type_of_service" maxlength="60"
+						placeholder="Enter service rendered"><br><br>
+				</div>
 
-			<button class="normalbtn">Update Record</button>
+				<div class="input-box">
+					<span class="details">Company's Phone Number</span>
+					<input id="reg_pwd2" name="company_phone_no" minlength="8" maxlength="16"
+						placeholder="Enter phone number"><br><br>
+				</div>
+
+				<div class="input-box">
+					<span class="details">Country of Company</span>
+					<input id="reg_pwd2" name="country_of_operation" type="country" maxlength="60"
+						placeholder="Enter country of company"><br><br>
+				</div>
+
+				<div class="input-box">
+					<span class="details">State of Company Location</span>
+					<input id="reg_pwd2" name="State_of_opration" maxlength="60"
+						placeholder="Enter company location"><br><br>
+				</div>
+
+				<div class="input-box">
+					<span class="details">LGA of Company</span>
+					<input id="reg_pwd2" name="lga_operation" maxlength="60" placeholder="Enter LGA"><br><br>
+				</div>
+
+				<div class="input-box">
+					<span class="details">Deatailed Company Address</span>
+					<input id="reg_pwd2" name="company_address" maxlength="60"
+						placeholder="Enter company address"><br><br>
+				</div>
+
+				<!-- <button class="normalbtn">Update Record</button> -->
+				<div class="button">
+					<input type="submit" value="Update Record">
+				</div>
+			</div>
 		</form>
 	</div>
 </section>
@@ -55,8 +87,8 @@
 {% block javascript %}
 <script>
 
-function loginLink(){
-	window.location.href="/seller/login"
-}
+	function loginLink() {
+		window.location.href = "/seller/login"
+	}
 </script>
 {% endblock %}
