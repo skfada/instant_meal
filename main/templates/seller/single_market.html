@@ -1,7 +1,7 @@
 {% extends "seller_base.html" %}
 
 {% block title %}Market Page{% endblock %}
-	{% block market %} active{% endblock %}
+{% block market %} active{% endblock %}
 
 {% block heading %}Welcome {{session['seller_name']}} to our market page{% endblock %}
 {% block body %}
@@ -31,12 +31,16 @@
 					<td>N{{formatNumber(items.menu_price)}}</td>
 					<td>{{items.seller_name }}</td>
 					<td class="actioncolum">
-						<button class="small_infobtn" onclick="viewInfo(heading='{{items.menu_name}}', desc='{{items.menu_description}}')" type="button">View Info</button>
+						<button class="small_infobtn"
+							onclick="viewInfo(heading='{{items.menu_name}}', desc='{{items.menu_description}}')"
+							type="button">View Info</button>
 						<form>
 							<input name="itemname" type="hidden">
 							<input name="price" type="hidden">
 							<input name="id" type="hidden">
-							<button class="small_buybtn" onclick="dropItem(itemname='{{items.menu_name}}', price='N{{formatNumber(items.menu_price)}}', id='{{items.menu_id}}')" type="button">Remove Item</button>
+							<button class="small_buybtn"
+								onclick="dropItem(itemname='{{items.menu_name}}', price='N{{formatNumber(items.menu_price)}}', id='{{items.menu_id}}')"
+								type="button">Remove Item</button>
 						</form>
 					</td>
 				</tr>
@@ -60,67 +64,67 @@
 <script>
 
 
-function viewInfo(val1='', val2=''){
-	const overlay = document.getElementById('overlay');
-	const section_modal_view_info = document.getElementById('section_modal_view_info');
-	const modal_view_info_title = document.getElementById('modal_view_info_title');
-	const modal_view_info_body = document.getElementById('modal_view_info_body');
+	function viewInfo(val1 = '', val2 = '') {
+		const overlay = document.getElementById('overlay');
+		const section_modal_view_info = document.getElementById('section_modal_view_info');
+		const modal_view_info_title = document.getElementById('modal_view_info_title');
+		const modal_view_info_body = document.getElementById('modal_view_info_body');
 
-	section_modal_view_info.style.display='block';
-	overlay.style.position="fixed";
-	overlay.style.top="0";
-	overlay.style.right="0";
-	overlay.style.bottom="0";
-	overlay.style.left="0";
-	overlay.style.backgroundColor="rgba(0,0,0,0.5)";
-	overlay.style.zIndex="15";
+		section_modal_view_info.style.display = 'block';
+		overlay.style.position = "fixed";
+		overlay.style.top = "0";
+		overlay.style.right = "0";
+		overlay.style.bottom = "0";
+		overlay.style.left = "0";
+		overlay.style.backgroundColor = "rgba(0,0,0,0.5)";
+		overlay.style.zIndex = "15";
 
-	/* passing values dynamically */
-	modal_view_info_title.innerHTML = "Description For: " + val1;
-	modal_view_info_body.innerHTML = val2;
-}
-
-
-function dropItem(itemname='', price='', id=''){
-	const overlay = document.getElementById('overlay');
-	const section_modal_drop = document.getElementById('section_modal_drop');
-	const modal_drop_title = document.getElementById('modal_drop_title');
-	const modal_drop_body = document.getElementById('modal_drop_body');
-
-	/* varaibles for the form inpu id */
-	const modaldrop_id = document.getElementById('modaldrop_id');
-
-	/* passing values to the modal confirmation form */
-	modaldrop_id.value = id;
-
-	/* changing the style effects */
-	section_modal_drop.style.display='block';
-	overlay.style.position="fixed";
-	overlay.style.top="0";
-	overlay.style.right="0";
-	overlay.style.bottom="0";
-	overlay.style.left="0";
-	overlay.style.backgroundColor="rgba(0,0,0,0.5)";
-	overlay.style.zIndex="15";
+		/* passing values dynamically */
+		modal_view_info_title.innerHTML = "Description For: " + val1;
+		modal_view_info_body.innerHTML = val2;
+	}
 
 
-	/* passing values dynamically */
+	function dropItem(itemname = '', price = '', id = '') {
+		const overlay = document.getElementById('overlay');
+		const section_modal_drop = document.getElementById('section_modal_drop');
+		const modal_drop_title = document.getElementById('modal_drop_title');
+		const modal_drop_body = document.getElementById('modal_drop_body');
 
-	modal_drop_title.innerHTML = itemname;
+		/* varaibles for the form inpu id */
+		const modaldrop_id = document.getElementById('modaldrop_id');
 
-	var itemName = "Item Name: " + itemname + "<br>";
-	var itemPrice = "Price: " + price + "<br>";
-	var itemID = "ID NO.: " + id;
-	var conclude = "<h5 style='color:yellow'>by clicking 'Remove Button', you are confirmation to remove the above item from the market</h5>";
-	var message = itemName + itemPrice + itemID + conclude;
+		/* passing values to the modal confirmation form */
+		modaldrop_id.value = id;
 
-	modal_drop_body.innerHTML = message;
-}
+		/* changing the style effects */
+		section_modal_drop.style.display = 'block';
+		overlay.style.position = "fixed";
+		overlay.style.top = "0";
+		overlay.style.right = "0";
+		overlay.style.bottom = "0";
+		overlay.style.left = "0";
+		overlay.style.backgroundColor = "rgba(0,0,0,0.5)";
+		overlay.style.zIndex = "15";
+
+
+		/* passing values dynamically */
+
+		modal_drop_title.innerHTML = itemname;
+
+		var itemName = "Item Name: " + itemname + "<br>";
+		var itemPrice = "Price: " + price + "<br>";
+		var itemID = "ID NO.: " + id;
+		var conclude = "<h5 style='color:#ff6666'>by clicking 'Remove Button', you are confirmation to remove the above item from the market</h5>";
+		var message = itemName + itemPrice + itemID + conclude;
+
+		modal_drop_body.innerHTML = message;
+	}
 
 
 
-function addNewItem(){
-	window.location.href='/seller/upload_meal';
-}
+	function addNewItem() {
+		window.location.href = '/seller/upload_meal';
+	}
 </script>
 {% endblock %}
