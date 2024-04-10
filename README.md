@@ -128,5 +128,4 @@ in the `instant_meal/main` directory, the following folders will be found:
 
 ## AUTHORS
 the authors to this project includes:
-- Adamu Solomon <adamusolomon44@gmail.com> (https://github.com/skfada)
-- Okungbowa Godspower <godspowerokungbowa0@gmail.com> (https://github.com/OkungbowaGodspower)
+- OKOLI CHISOM <chisomd90@gmail.com> (https://github.com/chisomd90)
