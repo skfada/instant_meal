@@ -128,4 +128,3 @@ in the `instant_meal/main` directory, the following folders will be found:
 
 ## AUTHORS
 the authors to this project includes:
-- OKOLI CHISOM <chisomd90@gmail.com> (https://github.com/chisomd90)
