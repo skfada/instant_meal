@@ -9,6 +9,7 @@ from flask_bcrypt import generate_password_hash
 from flask_bcrypt import check_password_hash
 from main.myfunction import fmtNumber
 from datetime import datetime
+
 app = Flask(__name__, template_folder='templates', static_folder='static')
 """ configuring the app """
 app.config['SECRET_KEY'] = CKRIT
