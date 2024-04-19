@@ -1,42 +1,70 @@
 {% extends "user_base.html" %}
 
 {% block title %}Update Profile{% endblock %}
-	{% block update %} active{% endblock %}
+{% block update %} active{% endblock %}
 
-{% block heading %}Welcome {{session['username']}} to the update page{% endblock %}
+{% block heading %}Keep Us Informed: {{session['username']}} Update Your Info{% endblock %}
 
 {% block body %}
-<section id="section_updateform">
+<section id="section_updateform" class="container">
+	<!-- <div class="title">Update Profile</div> -->
 	<div id="div_regform">
 		<form method="POST" action="{{url_for('user.update')}}">
-			<div>First Name</div>
-			<input id="reg_username" name="firstname"  maxlength="20" ><br><br>
+			<div class="title">Update Profile</div>
+			<div class="user-details">
+				<div class="input-box">
+					<span class="details">First Name</span>
+					<input id="reg_username" name="firstname" maxlength="20"
+						placeholder="Enter your first name"><br><br>
+				</div>
 
-			<div>Last Name</div>
-			<input id="reg_email" name="lastname"  maxlength="60" ><br><br>
+				<div class="input-box">
+					<span class="details">Last Name</span>
+					<input id="reg_email" name="lastname" maxlength="60" placeholder="Enter your last name"><br><br>
+				</div>
 
-			<div>Date of Birth</div>
-			<input id="reg_pwd1" name="dob" type="date" ><br><br>
+				<div class="input-box">
+					<span class="details">Date of Birth</span>
+					<input id="reg_pwd1" name="dob" type="date"><br><br>
+				</div>
 
-			<div>Occupation</div>
-			<input id="reg_pwd2" name="occupation" maxlength="60" ><br><br>
-			
-			<div>Phone NUmber</div>
-			<input id="reg_pwd2" name="phone" minlength="8" maxlength="16" ><br><br>
-			
-			<div>Country of Residence</div>
-			<input id="reg_pwd2" name="country" type="country" maxlength="60" ><br><br>
-			
-			<div>State of Residence</div>
-			<input id="reg_pwd2" name="state" maxlength="60"><br><br>
-			
-			<div>LGA of Residence</div>
-			<input id="reg_pwd2" name="lga" maxlength="60" ><br><br>
-			
-			<div>Deatailed House Address</div>
-			<input id="reg_pwd2" name="house" maxlength="60" ><br><br>
+				<div class="input-box">
+					<span class="details">Occupation</span>
+					<input id="reg_pwd2" name="occupation" maxlength="60" placeholder="Enter your occupation"><br><br>
+				</div>
 
-			<button class="normalbtn">Update Record</button>
+				<div class="input-box">
+					<span class="details">Phone Number</span>
+					<input id="reg_pwd2" name="phone" minlength="8" maxlength="16"
+						placeholder="Enter phone number"><br><br>
+				</div>
+
+				<div class="input-box">
+					<span class="details">Country of Residence</span>
+					<input id="reg_pwd2" name="country" type="country" maxlength="60"
+						placeholder="Enter your country"><br><br>
+				</div>
+
+				<div class="input-box">
+					<span class="details">State of Residence</span>
+					<input id="reg_pwd2" name="state" maxlength="60" placeholder="Enter state of residence"><br><br>
+				</div>
+
+				<div class="input-box">
+					<span class="details">LGA of Residence</span>
+					<input id="reg_pwd2" name="lga" maxlength="60" placeholder="Enter LGA"><br><br>
+				</div>
+
+				<div class="input-box">
+					<span class="details">Detailed House Address</span>
+					<input id="reg_pwd2" name="house" maxlength="60" placeholder="Enter house address"><br><br>
+				</div>
+
+				<!-- <button class="normalbtn">Update Record</button> -->
+				<div class="button">
+					<input type="submit" value="Update Record">
+				</div>
+			</div>
 		</form>
 	</div>
 </section>
@@ -55,8 +83,8 @@
 {% block javascript %}
 <script>
 
-function loginLink(){
-	window.location.href="/api/user/login"
-}
+	function loginLink() {
+		window.location.href = "/api/user/login"
+	}
 </script>
 {% endblock %}

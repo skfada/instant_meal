@@ -14,11 +14,8 @@ The Instant Meal will serve as a market place for restaurant Owners and for vari
 - clone the repositotory via https://github.com/skfada/instant_meal.git
 - navigate into the instant_meal/ directory.
 
-##### 2- MYSQL APPLICATION SHOULD BE INSTALLED ON YOUR SYTEM
-- ensure you have mysql server installed on your system.
-- ensure you have python3 installed with the necessary modules.
-- type the command `cat main/database/schema.sql | mysql -uroot -p` to create the database.
-- type the command `./create_all_table.py` to create the tables.
+##### 2- SQLITE3 DATABASE
+- type the command `./create_all_table.py` to create the sqlite3 database and tables.
 
 
 ##### 3- EXECUTE THE RUN.PY SCRIPT
@@ -62,7 +59,7 @@ in the `instant_meal/main` directory, the following folders will be found:
 	- `instant_meal/main/templates/market/`: which will serve all market html response.
 
 	- `instant_meal/main/templates/base.html`: this is an html file that will serve as a base template for all the html files in the template directory.
-	
+
 	- `instant_meal/main/templates/home.html`: this is the home html file that will serve as a base template for all the html files that will be diliveres as our index page or home page.
 
 
@@ -79,14 +76,14 @@ in the `instant_meal/main` directory, the following folders will be found:
 **1. User Routes**:
    - `/user/register` (POST): Register a new user.
    - `/user/login` (POST): Authenticate and generate a token for the user.
-   - `/user/password_reset` (PUT, POST): Reset user password. 
+   - `/user/password_reset` (PUT, POST): Reset user password.
    - `/user/update` (PUT, POST): Update user profile information.
    - `/user/dashboard` (GET): to help the user access other user links.
    - `/user/info` (GET): Get the profile information for the authenticated user.
    - `/user/fund_wallet` (POST): to enable users fund their account for transaction purspose.
 
-   
-##### ROUTES YET TO BE IMPLEMENTED OR UPDATED  
+
+##### ROUTES YET TO BE IMPLEMENTED OR UPDATED
 **3. Market
 	- `/api/market`
 
@@ -127,7 +124,6 @@ in the `instant_meal/main` directory, the following folders will be found:
 10. Search and Filters:
    - `/api/search` (GET): Search for restaurants or menu items.
    - `/api/filters` (GET): Get filtering options for restaurants or menu items.
-
 
 
 ## AUTHORS

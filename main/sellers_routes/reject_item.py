@@ -8,8 +8,8 @@ from main.database.dbModels import (Users,
 def reject_item():
     if request.method == 'POST':
         '''check if item ID still exist'''
-        rejectid = request.form['rejectid']
-        if reject_item is not "":
+        rejectid = int(request.form['rejectid'])
+        if reject_item != "":
             '''FORM IS NOT EMPTY'''
             order_object = Orders.query.filter_by(order_id=rejectid).first()
             if order_object.order_id == None:
@@ -49,7 +49,7 @@ def reject_item():
                 session['user_fmt_budget'] = fmtNumber(buyer_obj.wallet)
                 session['seller_fmt_budget'] = fmtNumber(seller_obj.wallet)
 
-                flash(f'request has be decline.', 'success')
+                flash(f'request has been decline.', 'success')
                 return redirect(url_for('seller.dashboard'))
 
             else:

@@ -1,9 +1,9 @@
-{% extends "user_base.html" %}
+{% extends "seller_base.html" %}
 
 {% block title %}Market Page{% endblock %}
 {% block market %} active{% endblock %}
 
-{% block heading %}Welcome {{session['user_name']}}, Your Market Hub{% endblock %}
+{% block heading %}Welcome {{session['seller_name']}} to our market page{% endblock %}
 {% block body %}
 
 <section id="section_table">
@@ -12,7 +12,7 @@
 			<thead>
 				<th>
 					<tr>
-						<td>menu ID</td>
+						<td>Menu ID</td>
 						<td>Menu pic</td>
 						<td>Menu Name</td>
 						<td>Menu Price</td>
@@ -22,33 +22,31 @@
 				</th>
 			</thead>
 			<tbody>
-				{% include 'user/includes/modal_viewinfo.html' %}
-				{% include 'user/includes/modal_buyitem.html' %}
-				{% for item in items %}
+				{% include 'seller/includes/modal_viewinfo.html' %}
+				{% include 'seller/includes/modal_drop_item.html' %}
 				<tr>
-					<td>{{item.menu_id}}</td>
-					<td>{{item.menu_picture}}</td>
-					<td>{{item.menu_name}}</td>
-					<td>₦{{formatNumber(item.menu_price)}}</td>
-					<td>{{item.seller_name}}</td>
+					<td>{{items.menu_id}}</td>
+					<td>{{items.menu_picture}}</td>
+					<td>{{items.menu_name}}</td>
+					<td>N{{formatNumber(items.menu_price)}}</td>
+					<td>{{items.seller_name }}</td>
 					<td class="actioncolum">
 						<button class="small_infobtn"
-							onclick="viewInfo(heading='{{item.menu_name}}', desc='{{item.menu_description}}')"
+							onclick="viewInfo(heading='{{items.menu_name}}', desc='{{items.menu_description}}')"
 							type="button">View Info</button>
 						<form>
 							<input name="itemname" type="hidden">
 							<input name="price" type="hidden">
 							<input name="id" type="hidden">
 							<button class="small_buybtn"
-								onclick="buyItem(itemname='{{item.menu_name}}', price='₦{{formatNumber(item.menu_price)}}', itemid='{{item.menu_id}}', sellername='{{item.seller_name}}')"
-								type="button">Buy Item</button>
+								onclick="dropItem(itemname='{{items.menu_name}}', price='N{{formatNumber(items.menu_price)}}', id='{{items.menu_id}}')"
+								type="button">Remove Item</button>
 						</form>
 					</td>
 				</tr>
-				{% endfor %}
 			</tbody>
 		</table>
-		<!--<button id="uploadlink" onclick="addNewItem()" class="small_infobtn">Add New Item To Sell</button>-->
+		<button id="uploadlink" onclick="addNewItem()" class="small_infobtn">Add New Item To Sell</button>
 	</div>
 
 </section>
@@ -87,20 +85,20 @@
 	}
 
 
-	function buyItem(itemname = '', price = '', itemid = '', sellername = '') {
+	function dropItem(itemname = '', price = '', id = '') {
 		const overlay = document.getElementById('overlay');
-		const section_modal_buyitem = document.getElementById('section_modal_buyitem');
-		const modal_buy_title = document.getElementById('modal_buy_title');
-		const modal_buy_body = document.getElementById('modal_buy_body');
+		const section_modal_drop = document.getElementById('section_modal_drop');
+		const modal_drop_title = document.getElementById('modal_drop_title');
+		const modal_drop_body = document.getElementById('modal_drop_body');
 
 		/* varaibles for the form inpu id */
-		const modalbuy_id = document.getElementById('modalbuy_id');
+		const modaldrop_id = document.getElementById('modaldrop_id');
 
 		/* passing values to the modal confirmation form */
-		modalbuy_id.value = itemid;
+		modaldrop_id.value = id;
 
 		/* changing the style effects */
-		section_modal_buyitem.style.display = 'block';
+		section_modal_drop.style.display = 'block';
 		overlay.style.position = "fixed";
 		overlay.style.top = "0";
 		overlay.style.right = "0";
@@ -112,23 +110,21 @@
 
 		/* passing values dynamically */
 
-		modal_buy_title.innerHTML = itemname;
+		modal_drop_title.innerHTML = itemname;
 
 		var itemName = "Item Name: " + itemname + "<br>";
 		var itemPrice = "Price: " + price + "<br>";
-		var itemID = "ID NO.: " + itemid + "<br>";
-		var sellerName = "Seller Name: " + sellername;
-		var conclude = "<h5 style='color:#ff6666'>by clicking the below you are confirmation to buy the above item</h5>";
-		var message = itemName + itemPrice + itemID + sellerName + conclude;
+		var itemID = "ID NO.: " + id;
+		var conclude = "<h5 style='color:#ff6666'>by clicking 'Remove Button', you are confirmation to remove the above item from the market</h5>";
+		var message = itemName + itemPrice + itemID + conclude;
 
-		modal_buy_body.innerHTML = message;
+		modal_drop_body.innerHTML = message;
 	}
 
 
-	/*
-	function addNewItem(){
-		window.location.href='/seller/upload_meal';
+
+	function addNewItem() {
+		window.location.href = '/seller/upload_meal';
 	}
-	*/
 </script>
 {% endblock %}

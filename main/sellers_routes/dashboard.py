@@ -14,6 +14,7 @@ def dashboard():
     session['seller_fmt_budget'] = fmtNumber(seller_object.wallet)
     order_obj = Orders.query.filter_by(seller_name=session['seller_name']).all()
     if seller_object.company_address == None:
+        '''directing user to update their information'''
         flash('Kindly Update Details to continue', 'info')
         return redirect(url_for('seller.update'))
 

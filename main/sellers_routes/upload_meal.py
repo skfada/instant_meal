@@ -24,7 +24,7 @@ def upload_meal():
             )
             ''' store item in the data database '''
             db.session.add(new_item)
-            db.session.commit();
+            db.session.commit()
             flash('upload successfull','success')
             return redirect(url_for('seller.market'))
         else:

@@ -1,9 +1,9 @@
 {% extends "user_base.html" %}
 
 {% block title %}Fund Wallet{% endblock %}
-	{% block wallet %} active{% endblock %}
+{% block wallet %} active{% endblock %}
 
-{% block heading %}Welcome {{session['username']}} to our dashboard page{% endblock %}
+{% block heading %}Boost Your Balance, {{session['username']}} Fund Your Account{% endblock %}
 
 
 {% block body %}
@@ -12,7 +12,7 @@
 <section id="section_fundwallet">
 	<div id="div_regform">
 		<form method="POST" action="{{url_for('user.fund_wallet')}}">
-			<div>Enter The Amount to Fund your Wallet</div>
+			<div>Enter the amount to fund your wallet</div>
 			<input id="reg_email" name="amount" type="number" maxlength="5"><br><br>
 
 
@@ -37,8 +37,8 @@
 {% block javascript %}
 <script>
 
-function loginLink(){
-	window.location.href="/api/user/login"
-}
+	function loginLink() {
+		window.location.href = "/api/user/login"
+	}
 </script>
 {% endblock %}

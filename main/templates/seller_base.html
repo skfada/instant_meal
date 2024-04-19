@@ -1,125 +1,146 @@
 <!DOCTYPE html>
 
 <html>
+
 <head>
 	<title>{% block title %}<!--REPLACE WITH PAGE TITLE-->{% endblock %}</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="../static/bootstrap-5.3.2-dist/css/bootstrap.min.css">
 	<link rel='stylesheet' href='{{url_for("static",filename="seller_style.css")}}'>
 </head>
+
 <body>
 	<nav class="navbar navbar-light bg-warning" id='sec-navbar'>
 		<div class="container-fluid">
-			<div class="navbar-brand text-success"><h1>Instant Meal</h1></div>
+			<div class="navbar-brand text-success">
+				<h1>Instant Meal</h1>
+			</div>
 
 			<ul class="nav nav-justified text-success">
 				{% if 'seller_name' in session %}
-					<li><h4>Welcome {{session['seller_name']}}</h4></li>
-					<li><h4>Naira:{{session['seller_fmt_budget']}}</h4></li>
+				<li>
+					<h4 class="welcome">Welcome {{session['seller_name']}}</h4>
+				</li>
+				<li>
+					<h4 class="welcome">&#8358;:{{session['seller_fmt_budget']}}</h4>
+				</li>
 				{% endif %}
 			</ul>
 			<div class="">
 				<ul class="nav nav-pills nav-justified">
-				<li><a class="nav-link bg-success active" aria-current="page" href='{{url_for("home.home_page")}}'>Home</a></li>
-				{% if 'seller_name' in session %}
+					<li><a class="nav-link bg-success active" aria-current="page"
+							href='{{url_for("home.home_page")}}'>Home</a></li>
+					{% if 'seller_name' in session %}
 					<li><a class="nav-link active" href='{{url_for("seller.market")}}'>Market</a></li>
 					<li><a class="nav-link active" href='{{url_for("seller.dashboard")}}'>Dashboard</a></li>
 					<li><a class="nav-link active" href='{{url_for("seller.logout")}}'>Logout</a></li>
-				{% else %}
+					{% else %}
 					<li><a class="nav-link active" href='{{url_for("seller.login")}}'>Login</a></li>
 					<li><a class="nav-link active" href='{{url_for("seller.register")}}'>Register</a></li>
-				{% endif %}
-			</ul>
+					{% endif %}
+				</ul>
 			</div>
 		</div>
 	</nav>
 
 
-<section id='sec_flashbar'>
-	{% with messages = get_flashed_messages(with_categories=True) %}
+	<section id='sec_flashbar'>
+		{% with messages = get_flashed_messages(with_categories=True) %}
 		{% if messages %}
-			{% for category,message in messages %}
-			<div id="flash_div" class="flash_div">
-				<div>{{category}} :</div>
-				<input id="flas_msg" type="hidden" value="{{message}}">
-				<input id="flas_cat" type="hidden" value="{{category}}">
-				<div>{{message}}</div>
-				<button id="flash_close_btn" class="close_btn" onclick="closeflash()">&times</button>
-			</div>
-			{% endfor %}
+		{% for category,message in messages %}
+		<div id="flash_div" class="flash_div">
+			<div>{{category}} :</div>
+			<input id="flas_msg" type="hidden" value="{{message}}">
+			<input id="flas_cat" type="hidden" value="{{category}}">
+			<div>{{message}}</div>
+			<button id="flash_close_btn" class="close_btn" onclick="closeflash()">&times</button>
+		</div>
+		{% endfor %}
 		{% endif %}
-	{% endwith %}
-</section>
+		{% endwith %}
+	</section>
 
-<!-- this will prevent pointer events once flash displays-->
-<section id="overlay"></section>
+	<!-- this will prevent pointer events once flash displays-->
+	<section id="overlay"></section>
 
-<div id="titleh"><h4>{% block heading %}{% endblock %}</h4></div>
+	<div id="titleh">
+		<h4>{% block heading %}{% endblock %}</h4>
+	</div>
 
-<!--LEFT NAVIGATION BAR-->
-{% if 'seller_name' in session %}
-<section id='sec-navdashboard'>
-	<ul>
-		<li><a class="{% block upload_item %} {% endblock %}" href="{{url_for('seller.upload_meal')}}">Upload Meal</a></li>
-		<li><a>Upload Picture</a></li>
-		<li><a class="{% block viewprofile %} {% endblock %}" href="{{url_for('seller.view_profile')}}">View Profile</a></li>
-		<li><a class="{% block update %} {% endblock %}" href="{{url_for('seller.update')}}">Update Profile</a></li>
-		<li><a class="{% block reset %} {% endblock %}" href="{{url_for('seller.password_reset')}}">Change Password</a></li>
-	</ul>
-</section>
-{% endif %}
-{% block body %}
-
-
-
-{% endblock %}
-
-<script>
-const category = document.getElementById('flas_cat').value;
-const message = document.getElementById('flas_msg').value;
-const sec_flashbar = document.getElementById('sec_flashbar');
-const flash_div = document.getElementById('flash_div');
-const overlay = document.getElementById('overlay');
+	<!--LEFT NAVIGATION BAR-->
+	{% if 'seller_name' in session %}
+	<section id='sec-navdashboard'>
+		<ul>
+			<li><a class="{% block upload_item %} {% endblock %}" href="{{url_for('seller.upload_meal')}}">Upload
+					Meal</a></li>
+			<li><a>Upload Picture</a></li>
+			<li><a class="{% block viewprofile %} {% endblock %}" href="{{url_for('seller.view_profile')}}">View
+					Profile</a></li>
+			<li><a class="{% block update %} {% endblock %}" href="{{url_for('seller.update')}}">Update Profile</a></li>
+			<li><a class="{% block reset %} {% endblock %}" href="{{url_for('seller.password_reset')}}">Change
+					Password</a></li>
+		</ul>
+	</section>
+	{% endif %}
+	{% block body %}
 
 
-if (message === ""){
-	sec_flashbar.style.display="none";
-}
-else {
-	sec_flashbar.style.display="block";
-	if (category === "success"){
-		flash_div.style.backgroundColor="rgba(0,255,0,0.5)";
-	}
-	else if (category === "info"){
-		flash_div.style.backgroundColor="rgba(0,0,255,0.5)";
-	}
-	else if (category === "caution"){
-		flash_div.style.backgroundColor="rgba(255,0,0,0.5)";
-	}
 
-	overlay.style.position="fixed";
-	overlay.style.top="0";
-	overlay.style.right="0";
-	overlay.style.bottom="0";
-	overlay.style.left="0";
-	overlay.style.backgroundColor="rgba(0,0,0,0.5)";
-	overlay.style.zIndex="15";
-}
+	{% endblock %}
 
-function closeflash(){
-	sec_flashbar.style.display="none";
-	overlay.style.pointerEvents="none";
-	overlay.style.opacity="0";
-	/*location.reload();*/
-
-}
-</script>
+	<script>
+		const category = document.getElementById('flas_cat').value;
+		const message = document.getElementById('flas_msg').value;
+		const sec_flashbar = document.getElementById('sec_flashbar');
+		const flash_div = document.getElementById('flash_div');
+		const overlay = document.getElementById('overlay');
 
 
-<!--JAVA FOR OTHER PAGES-->
-{% block javascript %}
+		if (message === "") {
+			sec_flashbar.style.display = "none";
+		}
+		else {
+			sec_flashbar.style.display = "block";
+			if (category === "success") {
+				flash_div.style.backgroundColor = "#00b300";
+				flash_div.style.width = "30%";
+				flash_div.style.left = "57%";
+			}
+			else if (category === "info") {
+				flash_div.style.backgroundColor = "#6666ff";
+				flash_div.style.width = "40%";
+				flash_div.style.left = "57%";
+			}
+			else if (category === "caution") {
+				flash_div.style.backgroundColor = "#b30000";
+				flash_div.style.width = "30%";
+				flash_div.style.left = "57%";
+			}
+
+			overlay.style.position = "fixed";
+			overlay.style.top = "0";
+			overlay.style.right = "0";
+			overlay.style.bottom = "0";
+			overlay.style.left = "0";
+			overlay.style.backgroundColor = "rgba(0,0,0,0.5)";
+			overlay.style.zIndex = "15";
+		}
+
+		function closeflash() {
+			sec_flashbar.style.display = "none";
+			overlay.style.pointerEvents = "none";
+			overlay.style.opacity = "0";
+			/*location.reload();*/
+
+		}
+	</script>
 
 
-{% endblock %}
+	<!--JAVA FOR OTHER PAGES-->
+	{% block javascript %}
+
+
+	{% endblock %}
 </body>
+
 </html>

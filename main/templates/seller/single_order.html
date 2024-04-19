@@ -1,7 +1,7 @@
 {% extends "seller_base.html" %}
 
 {% block title %}Dashboard Page{% endblock %}
-	{% block dashboard %} active{% endblock %}
+{% block dashboard %} active{% endblock %}
 
 {% block heading %}Welcome {{session['seller_name']}} to the Dashboard page{% endblock %}
 {% block body %}
@@ -25,6 +25,7 @@
 				</th>
 			</thead>
 			<tbody>
+				{% include 'seller/includes/modal_rejectitem.html' %}
 				<tr>
 					<td>{{orders.order_id}}</td>
 					<td>{{orders.order_datetime}}</td>
@@ -38,23 +39,26 @@
 						<form>
 							<input name="reject_menuid" type="hidden">
 
-							<button class="small_buybtn" onclick="rejectOrder(orderId='{{orders.order_id}}', itemname='{{orders.menu_name}}', price='{{formatNumber(orders.menu_price)}}')" type="button">Reject Order</button>
+							<button class="small_buybtn"
+								onclick="rejectOrder(orderId='{{orders.order_id}}', itemname='{{orders.menu_name}}', price='{{formatNumber(orders.menu_price)}}')"
+								type="button">Reject Order</button>
 						</form>
 
 						<form method='POST' action='{{url_for("seller.take_order")}}'>
 							<input id='take_menuid' name='take_menuid' value='{{orders.order_id}}' type='hidden'>
-						<button class="small_infobtn" type="submit">Take Order</button>
+							<button class="small_infobtn" type="submit">Take Order</button>
 						</form>
 
 						<form method='POST' action='{{url_for("seller.dispatch_order")}}'>
-							<input id='dispatch_menuid' name='dispatch_menuid' value='{{orders.order_id}}' type='hidden'>
-						<button class="small_infobtn" type="submit">Dispatch Order</button>
+							<input id='dispatch_menuid' name='dispatch_menuid' value='{{orders.order_id}}'
+								type='hidden'>
+							<button class="small_infobtn" type="submit">Dispatch Order</button>
 						</form>
 					</td>
 				</tr>
 			</tbody>
 		</table>
-		<!--<button id="uploadlink" onclick="addNewItem()" class="small_infobtn">Add New Item To Sell</button>-->
+		<button id="uploadlink" onclick="addNewItem()" class="small_infobtn">Add New Item To Sell</button>
 	</div>
 
 </section>
@@ -72,69 +76,67 @@
 <script>
 
 
-function viewInfo(val1='', val2=''){
-	const overlay = document.getElementById('overlay');
-	const section_modal_view_info = document.getElementById('section_modal_view_info');
-	const modal_view_info_title = document.getElementById('modal_view_info_title');
-	const modal_view_info_body = document.getElementById('modal_view_info_body');
+	function viewInfo(val1 = '', val2 = '') {
+		const overlay = document.getElementById('overlay');
+		const section_modal_view_info = document.getElementById('section_modal_view_info');
+		const modal_view_info_title = document.getElementById('modal_view_info_title');
+		const modal_view_info_body = document.getElementById('modal_view_info_body');
 
-	section_modal_view_info.style.display='block';
-	overlay.style.position="fixed";
-	overlay.style.top="0";
-	overlay.style.right="0";
-	overlay.style.bottom="0";
-	overlay.style.left="0";
-	overlay.style.backgroundColor="rgba(0,0,0,0.5)";
-	overlay.style.zIndex="15";
+		section_modal_view_info.style.display = 'block';
+		overlay.style.position = "fixed";
+		overlay.style.top = "0";
+		overlay.style.right = "0";
+		overlay.style.bottom = "0";
+		overlay.style.left = "0";
+		overlay.style.backgroundColor = "rgba(0,0,0,0.5)";
+		overlay.style.zIndex = "15";
 
-	/* passing values dynamically */
-	modal_view_info_title.innerHTML = "Description For: " + val1;
-	modal_view_info_body.innerHTML = val2;
-}
-
-
-function buyItem(itemname='', price='', itemid='', sellername=''){
-	const overlay = document.getElementById('overlay');
-	const section_modal_buyitem = document.getElementById('section_modal_buyitem');
-	const modal_buy_title = document.getElementById('modal_buy_title');
-	const modal_buy_body = document.getElementById('modal_buy_body');
-
-	/* varaibles for the form inpu id */
-	const modalbuy_id = document.getElementById('modalbuy_id');
-
-	/* passing values to the modal confirmation form */
-	modalbuy_id.value = itemid;
-
-	/* changing the style effects */
-	section_modal_buyitem.style.display='block';
-	overlay.style.position="fixed";
-	overlay.style.top="0";
-	overlay.style.right="0";
-	overlay.style.bottom="0";
-	overlay.style.left="0";
-	overlay.style.backgroundColor="rgba(0,0,0,0.5)";
-	overlay.style.zIndex="15";
+		/* passing values dynamically */
+		modal_view_info_title.innerHTML = "Description For: " + val1;
+		modal_view_info_body.innerHTML = val2;
+	}
 
 
-	/* passing values dynamically */
+	function rejectOrder(orderId = '', itemname = '', price = '') {
+		const overlay = document.getElementById('overlay');
+		const section_modal_rejectitem = document.getElementById('section_modal_rejectitem');
+		const modal_reject_title = document.getElementById('modal_reject_title');
+		const modal_reject_body = document.getElementById('modal_reject_body');
 
-	modal_buy_title.innerHTML = itemname;
+		/* varaibles for the form inpu id */
+		const modalreject_id = document.getElementById('modalreject_id');
 
-	var itemName = "Item Name: " + itemname + "<br>";
-	var itemPrice = "Price: " + price + "<br>";
-	var itemID = "ID NO.: " + itemid + "<br>";
-	var sellerName = "Seller Name: " + sellername;
-	var conclude = "<h5 style='color:yellow'>by clicking the below you are confirmation to buy the above item</h5>";
-	var message = itemName + itemPrice + itemID + sellerName + conclude;
+		/* passing values to the modal confirmation form */
+		modalreject_id.value = orderId;
 
-	modal_buy_body.innerHTML = message;
-}
+		/* changing the style effects */
+		section_modal_rejectitem.style.display = 'block';
+		overlay.style.position = "fixed";
+		overlay.style.top = "0";
+		overlay.style.right = "0";
+		overlay.style.bottom = "0";
+		overlay.style.left = "0";
+		overlay.style.backgroundColor = "rgba(0,0,0,0.5)";
+		overlay.style.zIndex = "15";
 
 
-/*
-function addNewItem(){
-	window.location.href='/seller/upload_meal';
-}
-*/
+		/* passing values dynamically */
+
+		modal_reject_title.innerHTML = "You are about to Reject Order for: " + itemname;
+
+		var itemName = "Item Name: " + itemname + "<br>";
+		var itemPrice = "Price: " + price + "<br>";
+		var itemID = "ID NO.: " + orderId;
+		var conclude = "<h5 style='color:#ff6666'>by clicking the below you agree to reject the order</h5>";
+		var message = itemName + itemPrice + itemID + conclude;
+
+		modal_reject_body.innerHTML = message;
+	}
+
+
+
+	function addNewItem() {
+		window.location.href = '/seller/upload_meal';
+	}
 </script>
 {% endblock %}

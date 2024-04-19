@@ -12,6 +12,7 @@ from datetime import datetime
 app = Flask(__name__, template_folder='templates', static_folder='static')
 """ configuring the app """
 app.config['SECRET_KEY'] = CKRIT
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = DB_URI
 
 swagger = Swagger(app)
@@ -45,3 +46,10 @@ def seller_login_required(func):
             return redirect(url_for('seller.login'))
 
     return wrapper
+
+host = "0.0.0.0"
+port = 8000
+debug = True
+
+if __name__ == "__main__":
+    app.run(host=host, debug=debug)
