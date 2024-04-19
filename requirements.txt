@@ -15,7 +15,7 @@ chardet
 click
 # cloud-init
 colorama
-command-not-found
+#command-not-found
 configobj
 constantly
 cryptography
